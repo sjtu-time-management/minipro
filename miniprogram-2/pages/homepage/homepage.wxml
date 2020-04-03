@@ -1,0 +1,9 @@
+<view class='container' >
+  <image class='hpimage' src='/images/blueclock.jpg'></image>
+  <text class='maintitle'>时间管理系统sjtu</text>
+  <view class="juzhongxiaozi">
+    <text>一款为交大同学量身定制的</text>
+    <text>时间管理系统</text>
+  </view>
+  <navigator url="/pages/timetable/timetable" open-type="switchTab" hover-class="starterclicked" class="starterdefault">开始使用</navigator>
+</view>

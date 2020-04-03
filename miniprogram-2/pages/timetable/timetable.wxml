@@ -1,0 +1,9 @@
+<button class="addbutton" bindtap="addnew" loading="{{loading}}" disabled="{{disabled}}">+</button>
+<view class="timetable1" wx:for="{{eventList}}">
+  <text class="evttag">{{item.eventTag}}</text>
+  <view class="rightside">
+    <text>{{item.eventDetail}}</text>
+    <text>{{item.eventDate.year}}.{{item.eventDate.month}}.{{item.eventDate.date}}</text>
+    <text>  {{item.startTime.startHour}}:{{item.startTime.startMin}}~{{item.endTime.endHour}}:{{item.endTime.endMin}}</text>
+  </view>
+</view>
