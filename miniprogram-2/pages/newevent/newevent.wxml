@@ -21,4 +21,4 @@
   <text> : </text>
   <input bindinput='inputEndMin' class="shortinput2"></input>
 </view>
-<button>确认提交</button>
+<button style="margin-top=60rpx;" bindtap="commitbutton">确认提交</button>

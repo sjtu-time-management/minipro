@@ -1,57 +1,6 @@
 Page({
   data: {
-    eventList: [{
-        eventTag: "事件A",
-        eventDetail: "备注A",
-        eventDate: {
-          year: 2020,
-          month: "04",
-          date: "03",
-        },
-        startTime: {
-          startHour: "08",
-          startMin: "10",
-        },
-        endTime: {
-          endHour: "09",
-          endMin: "20",
-        }
-      },
-      {
-        eventTag: "事件B",
-        eventDetail: "长备注测试sjkdhfjdhsfakljhdfaklsadfaadsfasd",
-        eventDate: {
-          year: 2019,
-          month: "04",
-          date: "02",
-        },
-        startTime: {
-          startHour:" 16",
-          startMin: "10",
-        },
-        endTime: {
-          endHour: "20",
-          endMin: "46",
-        }
-      },
-      {
-        eventTag: "事件C",
-        eventDetail: "备注C",
-        eventDate: {
-          year: 2020,
-          month: "04",
-          date: "03",
-        },
-        startTime: {
-          startHour:" 21",
-          startMin: "22",
-        },
-        endTime: {
-          endHour: "22",
-          endMin: "34",
-        }
-      }
-    ],
+    records:[],
 
     loading:false,
     disabled:false
@@ -66,10 +15,22 @@ Page({
       url: '/pages/newevent/newevent',
     })
   },
+  deleteEvent:function(e){
+    console.log(e);
+    var index = e.currentTarget.dataset.index;
+    var records=this.data.records;
+    records.splice(index,1);
+    this.setData({
+      records:records
+    });
+    wx.setStorageSync('records', this.data.records);
+  },
   onShow: function (options) {
+    var app=getApp();
     this.setData({
       loading: this.data.loading = false,
       disabled: this.data.disabled = false,
+      records:wx.getStorageSync('records')
     })
   }
 })

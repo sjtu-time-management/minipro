@@ -13,6 +13,7 @@
 }
 .rightside{
   font-size: 25rpx;
+  width:520rpx;
 }
 
 .addbutton{
@@ -25,4 +26,17 @@
   margin-top: -20rpx;
   border: solid 1px black;
   text-align: center;
+}
+.delete{
+  color: red;
+}
+.hiddenpart{
+  margin-top: 300rpx;
+  color: gray;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.count{
+  margin-left: 30rpx;
 }

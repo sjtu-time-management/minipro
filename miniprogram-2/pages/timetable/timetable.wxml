@@ -1,9 +1,17 @@
 <button class="addbutton" bindtap="addnew" loading="{{loading}}" disabled="{{disabled}}">+</button>
-<view class="timetable1" wx:for="{{eventList}}">
-  <text class="evttag">{{item.eventTag}}</text>
+<view class="timetable1" wx:for="{{records}}">
+  <text class="evttag">{{item.itag}}</text>
   <view class="rightside">
-    <text>{{item.eventDetail}}</text>
-    <text>{{item.eventDate.year}}.{{item.eventDate.month}}.{{item.eventDate.date}}</text>
-    <text>  {{item.startTime.startHour}}:{{item.startTime.startMin}}~{{item.endTime.endHour}}:{{item.endTime.endMin}}</text>
+    <text>{{item.idetail}}</text>
+    <text>{{item.iyear}}.{{item.imonth}}.{{item.idate}}</text>
+    <text>  {{item.ish}}:{{item.ism}}~{{item.ieh}}:{{item.iem}}</text>
   </view>
+  <text class="delete" catchtap="deleteEvent" 
+  data-index="{{index}}">删除</text>
+</view>
+<view hidden="{{records.length}}" >
+<text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+</view>
+<view wx:if="{{records.length}}" >
+<text class="count">共{{records.length}}项</text>
 </view>
