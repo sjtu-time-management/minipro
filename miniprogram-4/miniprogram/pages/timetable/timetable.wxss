@@ -1,0 +1,42 @@
+.timetable1{
+  display: flex;
+  padding: 30rpx;
+  margin:20rpx 20rpx;
+  background-color: #FFFAF0;
+  border: solid 1px black;
+}
+.evttag{
+  font-size: 60rpx;
+  color: blue;
+  font-weight: bold;
+  width: 200rpx;
+}
+.rightside{
+  font-size: 25rpx;
+  width:520rpx;
+}
+
+.addbutton{
+  background-color:#B22222;
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+  width: 46px;
+  height: 80rpx;
+  margin-top: -20rpx;
+  border: solid 1px black;
+  text-align: center;
+}
+.delete{
+  color: red;
+}
+.hiddenpart{
+  margin-top: 300rpx;
+  color: gray;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.count{
+  margin-left: 30rpx;
+}
