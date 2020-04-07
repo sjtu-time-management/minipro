@@ -1,0 +1,38 @@
+.container{
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  align-items: center;
+}
+
+.hpimage{
+  width:450rpx;
+  height: 450rpx;
+  border-radius: 70%;
+}
+
+.maintitle{
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.starterdefault{
+  color: blue;
+  font-size: 60rpx;
+  font-weight: bold;
+}
+
+.starterclicked{
+  color:red;
+  font-size: 64rpx;
+  font-weight: bold;
+}
+
+.juzhongxiaozi{
+    margin-left: 50rpx;
+    margin-right: 50rpx;
+    text-align: center;
+}
+

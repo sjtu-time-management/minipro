@@ -1,0 +1,26 @@
+<button class="addbutton" bindtap="addnew" loading="{{loading}}" disabled="{{disabled}}">+</button>
+<view class='a' wx:for="{{records}}"><!--wx:for是微信数据绑定的一种方式，该数组有多少数据就显示多少个view-->
+    <!--index为每个数据对应的下标-->
+    <view >序号：{{index+1}}</view>
+    <!--item就相当于数组名+下标的结合体，适用于调用数组所有数据-->
+    <view>{{item.tag}}</view>
+    <view >{{item.detail}}</view>
+    <view >{{item.month}}</view>
+</view>
+ <!-- <view class="timetable1" wx:for="{{records}}">  
+  <text class="evttag">{{item.itag}}</text>
+  <view class="rightside">
+    <text>{{item.idetail}}</text>
+    <text>{{item.iyear}}.{{item.imonth}}.{{item.idate}}</text>
+    <text>  {{item.ish}}:{{item.ism}}~{{item.ieh}}:{{item.iem}}</text>
+    </view>  
+  <text class="delete" catchtap="deleteEvent"  
+   data-index="{{index}}">删除</text> 
+</view>
+<view hidden="{{records.length}}" >
+<text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+</view>
+<view wx:if="{{records.length}}" >
+<text class="count">共{{records.length}}项</text>
+</view>
+<!-- 每次返回上一界面的时候把记录传下来，到records里面 -->
