@@ -1,0 +1,51 @@
+<text>事件关键字：</text>
+<input bindinput='inputTag' placeholder='最多输入3个字' maxlength="3" style='border:1rpx solid #000;'></input>
+<text>详细信息：</text>
+<input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;'></input>
+<!-- <text>日期：</text> 
+<view class="timeinput">
+  <input bindinput='inputYear' class="shortinput"></input>
+  <text>年</text>
+  <input bindinput='inputMonth' class="shortinput"></input>
+  <text>月</text>
+  <input bindinput='inputDate' class="shortinput"></input>
+  <text>日</text>
+</view>
+<text>开始时间与结束时间</text>
+<view class="timeinput">
+<input bindinput='inputStartHour' class="shortinput2"></input>
+  <text> : </text>
+  <input bindinput='inputStartMin' class="shortinput2"></input>
+  <text> ~ </text>
+  <input bindinput='inputEndHour' class="shortinput2"></input>
+  <text> : </text>
+  <input bindinput='inputEndMin' class="shortinput2"></input>
+</view>-->
+<view class="section">  
+
+  <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">  
+
+    <view class="picker">  
+
+     时间 : {{times}}
+
+    </view>  
+
+  </picker>  
+
+</view>  
+
+<view class="section">  
+
+  <picker mode="date" value="{{date}}" start="1978-01-01" end="2017-1-23" bindchange="bindDateChange">  
+
+    <view class="picker">  
+
+      日期: {{dates}}  
+
+    </view>  
+
+  </picker>  
+
+</view>  
+<button style="margin-top=60rpx;" bindtap="commitbutton">确认提交</button>
