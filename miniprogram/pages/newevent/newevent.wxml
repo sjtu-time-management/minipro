@@ -2,6 +2,11 @@
 <input bindinput='inputTag' placeholder='最多输入3个字' maxlength="3" style='border:1rpx solid #000;'></input>
 <text>详细信息：</text>
 <input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;'></input>
+<checkbox-group bindchange="checkbox_change">
+  <label class="checkbox" >
+    <checkbox value="{{notifi.name}}" checked="{{notifi.checked}}" >设置提醒</checkbox>
+    </label>
+ </checkbox-group>
 <!-- <text>日期：</text> 
 <view class="timeinput">
   <input bindinput='inputYear' class="shortinput"></input>

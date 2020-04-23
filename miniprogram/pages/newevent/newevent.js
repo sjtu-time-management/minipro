@@ -19,6 +19,10 @@ Page({
     dates: '2016-11-08',
 
     times: '12:00',
+    //设置提醒：
+    notifi:{name:'notifi'},
+    noti_flag: false,
+    code:''
   },
 
 
@@ -53,6 +57,11 @@ Page({
 
     })
   },
+  checkbox_change: function(e){
+    
+    this.setData({noti_flag:!this.data.noti_flag})
+    //console.log(this.data.noti_flag)
+  },
 
   // inputYear: function (e) {
     // this.setData({ iyear: e.detail.value.trim() });
@@ -85,6 +94,38 @@ Page({
     if (!this.data.itag) {
       wx.showToast({ title: '请完整填写', icon: 'none' });
       return;
+    }
+    //判断是否提醒
+    if (this.data.noti_flag){
+      wx.request({
+        url: 'http://bcd4214c.ngrok.io/test/miniapi.php',
+        data: {
+          itag: this.data.itag,
+          iyear: this.data.dates,
+          itime: this.data.times,
+          // imonth: this.data.imonth,
+          // idate: this.data.idate,
+          // ish: this.data.ish,
+          // ism: this.data.ism,
+          // ieh: this.data.ieh,
+          // iem: this.data.iem
+          code: ''
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res){
+          wx.showToast({
+            title: '提醒设置完成！',icon:'none'
+          })
+          
+        },
+        fail(res){
+          wx.showToast({
+            title: '提醒设置失败！', icon: 'none'
+          })
+        }
+      })
     }
     db.collection('test2').add({
      data:{
