@@ -2,11 +2,7 @@
 <input bindinput='inputTag' placeholder='最多输入3个字' maxlength="3" style='border:1rpx solid #000;'></input>
 <text>详细信息：</text>
 <input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;'></input>
-<checkbox-group bindchange="checkbox_change">
-  <label class="checkbox" >
-    <checkbox value="{{notifi.name}}" checked="{{notifi.checked}}" >设置提醒</checkbox>
-    </label>
- </checkbox-group>
+
 <!-- <text>日期：</text> 
 <view class="timeinput">
   <input bindinput='inputYear' class="shortinput"></input>
@@ -39,7 +35,6 @@
   </picker>  
 
 </view>  
-
 <view class="section">  
 
   <picker mode="date" value="{{date}}" start="1978-01-01" end="2017-1-23" bindchange="bindDateChange">  
@@ -47,6 +42,25 @@
     <view class="picker">  
 
       日期: {{dates}}  
+
+    </view>  
+
+  </picker>  
+
+</view>  
+<!--> 提醒功能-->
+<checkbox-group bindchange="checkbox_change">
+  <label class="checkbox" >
+    <checkbox value="{{notifi.name}}" checked="{{notifi.checked}}" >设置提醒</checkbox>
+    </label>
+ </checkbox-group>
+ <view class="section">  
+
+  <picker mode="selector" range="{{array}}" value="{{noti_index}}"  disabled="{{disabled}}" bindchange="bindnotiChange">  
+
+    <view class="picker">  
+
+      提醒时间：{{array[noti_index]}} 
 
     </view>  
 

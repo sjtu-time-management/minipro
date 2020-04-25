@@ -22,7 +22,11 @@ Page({
     //设置提醒：
     notifi:{name:'notifi'},
     noti_flag: false,
-    code:''
+    code:'',
+    array: ['30分钟前', '10分钟前', '5分钟前','时间生效时'],
+    
+    disabled:true,
+    noti_index:0
   },
 
 
@@ -60,7 +64,14 @@ Page({
   checkbox_change: function(e){
     
     this.setData({noti_flag:!this.data.noti_flag})
+    this.setData({disabled:!this.data.disabled})
     //console.log(this.data.noti_flag)
+  },
+  bindnotiChange: function (e) {
+    //console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      noti_index: e.detail.value
+    })
   },
 
   // inputYear: function (e) {
@@ -97,32 +108,38 @@ Page({
     }
     //判断是否提醒
     if (this.data.noti_flag){
-      wx.request({
-        url: 'http://bcd4214c.ngrok.io/test/miniapi.php',
-        data: {
-          itag: this.data.itag,
-          iyear: this.data.dates,
-          itime: this.data.times,
-          // imonth: this.data.imonth,
-          // idate: this.data.idate,
-          // ish: this.data.ish,
-          // ism: this.data.ism,
-          // ieh: this.data.ieh,
-          // iem: this.data.iem
-          code: ''
-        },
-        header: {
-          'content-type': 'application/json'
-        },
+      var that=this;
+      wx.login({
         success(res){
-          wx.showToast({
-            title: '提醒设置完成！',icon:'none'
-          })
-          
-        },
-        fail(res){
-          wx.showToast({
-            title: '提醒设置失败！', icon: 'none'
+          wx.request({
+            url: 'http://c5a9d83f.ngrok.io/test/miniapi.php',
+            data: {
+              itag: that.data.itag,
+              iyear: that.data.dates,
+              itime: that.data.times,
+              // imonth: this.data.imonth,
+              // idate: this.data.idate,
+              // ish: this.data.ish,
+              // ism: this.data.ism,
+              // ieh: this.data.ieh,
+              // iem: this.data.iem
+              code: res.code,
+              noti_index: that.data.noti_index
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success(res) {
+              wx.showToast({
+                title: '提醒设置完成！', icon: 'none'
+              })
+
+            },
+            fail(res) {
+              wx.showToast({
+                title: '提醒设置失败！', icon: 'none'
+              })
+            }
           })
         }
       })
