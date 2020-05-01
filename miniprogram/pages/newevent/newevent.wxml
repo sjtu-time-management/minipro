@@ -1,8 +1,7 @@
 <text>事件关键字：</text>
-<input bindinput='inputTag' placeholder='最多输入3个字' maxlength="3" style='border:1rpx solid #000;'></input>
+<input bindinput='inputTag' placeholder='最多输入3个字' maxlength="3" style='border:1rpx solid #000;' class="shurukuang"></input>
 <text>详细信息：</text>
-<input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;'></input>
-
+<input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;' class="shurukuang"></input>
 <!-- <text>日期：</text> 
 <view class="timeinput">
   <input bindinput='inputYear' class="shortinput"></input>
@@ -22,49 +21,69 @@
   <text> : </text>
   <input bindinput='inputEndMin' class="shortinput2"></input>
 </view>-->
-<view class="section">  
+<view class="timeselect">
+  <text class="texts"> 时间 : </text>
+  <view class="section">
 
-  <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">  
+    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
 
-    <view class="picker">  
+      <view class="picker">
 
-     时间 : {{times}}
+       {{cstart}}
 
-    </view>  
+      </view>
 
-  </picker>  
+    </picker>
 
-</view>  
-<view class="section">  
+  </view>
+  <text>~</text>
+  <view class="section">
 
-  <picker mode="date" value="{{date}}" start="1978-01-01" end="2017-1-23" bindchange="bindDateChange">  
+    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChangeend">
 
-    <view class="picker">  
+      <view class="picker">
 
-      日期: {{dates}}  
+        {{cend}}
 
-    </view>  
+      </view>
 
-  </picker>  
+    </picker>
 
-</view>  
+  </view>
+</view>
+<view class="timeselect">
+<text class="texts">日期 : </text> 
+<view class="section">
+
+  <picker mode="date" value="{{date}}" start="2020-01-01" end="2022-12-31" bindchange="bindDateChange">
+
+    <view class="picker2">
+
+      {{dates}}
+
+    </view>
+
+  </picker>
+
+</view>
+</view>
 <!--> 提醒功能-->
 <checkbox-group bindchange="checkbox_change">
-  <label class="checkbox" >
-    <checkbox value="{{notifi.name}}" checked="{{notifi.checked}}" >设置提醒</checkbox>
-    </label>
- </checkbox-group>
- <view class="section">  
+<label class="checkbox" >
+<checkbox value="{{notifi.name}}" checked="{{notifi.checked}}" >设置提醒</checkbox>
+</label>
+</checkbox-group>
+<view class="section"> 
 
-  <picker mode="selector" range="{{array}}" value="{{noti_index}}"  disabled="{{disabled}}" bindchange="bindnotiChange">  
+<picker mode="selector" range="{{array}}" value="{{noti_index}}" disabled="{{disabled}}" bindchange="bindnotiChange"> 
 
-    <view class="picker">  
+<view class="picker"> 
 
-      提醒时间：{{array[noti_index]}} 
+提醒时间：{{array[noti_index]}} 
 
-    </view>  
+</view> 
 
-  </picker>  
+</picker> 
 
-</view>  
-<button style="margin-top=60rpx;" bindtap="commitbutton">确认提交</button>
+</view>
+<button bindtap="commitbutton" class="cbutton">确认提交</button>

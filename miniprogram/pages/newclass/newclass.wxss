@@ -1,0 +1,53 @@
+/* miniprogram/pages/newclass/newclass.wxss */
+.section{
+   font-size:35rpx;
+   margin:20rpx 20rpx;
+   border: dotted 1px black;
+   padding: 30rpx;
+  }
+  .on{display: block}
+  .off{display: none}
+
+  .xuanjie{
+    display: flex;
+    margin-top: 20rpx;
+    font-size: 40rpx;
+  }
+  .label{
+    text-align: center;
+    font-size: 60rpx;
+    font-weight: bold;
+    width: 690rpx;
+    background-color: rgba(43, 255, 0, 0.568);
+    padding: 30rpx;
+    border: solid 1px black;
+    margin-top: -20rpx;
+    border-radius: 20rpx;
+  }
+
+  .picker1{
+    text-align: center;
+    font-size: 40rpx;
+    border: solid 1px black;
+    padding: 20rpx;
+    margin: 40rpx 40rpx;
+    font-weight: bold;
+    border-radius: 30rpx;
+  }
+  .input1{
+    border: solid 1px grey;
+    width: 400rpx;
+    padding: 20rpx;
+    font-size: 40rpx;
+  }
+  .xzsj{
+    margin-top: 20rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+  }
+  .picker2{
+    border: solid 1px grey;
+    margin-right: 10rpx;
+    margin-left: 10rpx;
+    padding: 10rpx;
+  }

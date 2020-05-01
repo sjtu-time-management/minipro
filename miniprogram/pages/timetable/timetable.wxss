@@ -6,7 +6,14 @@
   border: solid 1px black;
 }
 .evttag{
-  font-size: 60rpx;
+  font-size: 50rpx;
+  color: blue;
+  font-weight: bold;
+  width: 160rpx;
+  margin-right: 20rpx;
+}
+.evttag2{
+  font-size: 30rpx;
   color: blue;
   font-weight: bold;
   width: 200rpx;
@@ -17,15 +24,16 @@
 }
 
 .addbutton{
-  background-color:#B22222;
-  color: white;
+  display:flex;
   font-size: 40rpx;
   font-weight: bold;
-  width: 46px;
-  height: 80rpx;
-  margin-top: -20rpx;
+  height: 90rpx;
+  margin-top: -25rpx;
+}
+.add{
+  background-color:#B22222;
+  color: white;
   border: solid 1px black;
-  text-align: center;
 }
 .delete{
   color: red;

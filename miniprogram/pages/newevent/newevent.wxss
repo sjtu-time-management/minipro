@@ -8,6 +8,27 @@
   width: 150rpx;
   margin: 0 15rpx;
 }
-.timeinput{
+.timeselect{
   display:flex;
+  margin-top: 25rpx;
+}
+
+.picker{
+  border:1rpx solid grey;
+  width: 100rpx;
+}
+
+.picker2{
+  border:1rpx solid grey;
+  width: 230rpx;
+}
+.cbutton{
+  margin-top: 25rpx;
+}
+.texts{
+  margin-right: 10rpx;
+}
+.shurukuang{
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
 }

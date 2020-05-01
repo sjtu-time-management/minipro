@@ -1,10 +1,18 @@
-<button class="addbutton" bindtap="addnew" loading="{{loading}}" disabled="{{disabled}}">+</button>
+<view class="addbutton">
+<button class="add" bindtap="addnewevent" loading="{{loading}}" disabled="{{disabled}}">+事件</button>
+<button class="add" bindtap="addnewclass" loading="{{loading}}" disabled="{{disabled}}">+课程</button>
+<!-- <button class="add" bindtap="hebing" loading="{{loading}}" disabled="{{disabled}}">shuaxin</button> -->
+</view>
+<!-- change1 -->
 <view class="timetable1" wx:for="{{records}}">
-  <text class="evttag">{{item.itag}}</text>
+
+  <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+  <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
   <view class="rightside">
     <text>{{item.idetail}}</text>
-    <text>{{item.iyear}}.{{item.imonth}}.{{item.idate}}</text>
-    <text>  {{item.ish}}:{{item.ism}}~{{item.ieh}}:{{item.iem}}</text>
+    <text>{{dates}}</text>
+    <text>  {{item.cstart}}~{{item.cend}}</text>
   </view>
   <text class="delete" catchtap="deleteEvent" 
   data-index="{{index}}">删除</text>
@@ -15,3 +23,4 @@
 <view wx:if="{{records.length}}" >
 <text class="count">共{{records.length}}项</text>
 </view>
+<text bindtap="test111">testtest</text>

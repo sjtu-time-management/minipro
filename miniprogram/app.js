@@ -17,7 +17,8 @@ App({
     }
 
     this.globalData = {
-      major:3
+      major:4,
+      bixiuss:[]
     }
   }
 })

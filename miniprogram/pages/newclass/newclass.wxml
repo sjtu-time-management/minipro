@@ -1,0 +1,48 @@
+<!--miniprogram/pages/newclass/newclass.wxml-->
+<!-- <text>miniprogram/pages/newclass/newclass.wxml</text> -->
+<view class="row-wrap">
+     <view class="label">↓ 选择课程 ↓</view>
+     <picker class="picker1" bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{classes}}">
+      <view>
+       <text>{{classes[casIndex]}}</text>
+      </view>
+
+     </picker>
+    </view>
+
+
+<view class="section">
+<view class=" {{reply?'on':'off'}}">
+    <input class="input1" bindinput='inputname' name="other" placeholder="请输入课程名称" type="text"/>
+  </view>
+
+  
+ <text class="xzsj">选择时间</text>
+    
+    <view class="xuanjie">
+    <picker class="picker2" bindchange="bindCasPickerChange2" value="{{casIndex2}}" range="{{dayofweek}}">
+      <view>
+       <text>{{dayofweek[casIndex2]}}</text>
+      </view>
+    </picker>
+   
+   
+    <text>第</text>
+    <picker class="picker2" bindchange="bindCasPickerChange3" value="{{casIndex3}}" range="{{classno1}}">
+      <view>
+       <text>{{classno1[casIndex3]}}</text>
+      </view>
+     </picker>
+     <text>节</text>
+     <text>~</text>
+     <text>第</text>
+     
+     <picker class="picker2" bindchange="bindCasPickerChange4" value="{{casIndex4}}" range="{{classno2}}">
+      <view>
+       <text>{{classno2[casIndex4]}}</text>
+      </view>
+     </picker>
+  <text>节</text>
+</view>
+</view>
+  <button bindtap="combutton">确认提交</button>

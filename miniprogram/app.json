@@ -2,7 +2,8 @@
   "pages": [
     "pages/homepage/homepage",
     "pages/timetable/timetable",
-    "pages/newevent/newevent"
+    "pages/newevent/newevent",
+    "pages/newclass/newclass"
   ],
   "window": {
     "backgroundTextStyle": "light",
