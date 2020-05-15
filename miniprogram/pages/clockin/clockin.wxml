@@ -1,0 +1,9 @@
+<view>
+<text>打卡时间：6:00 - 8:59，21:00 - 22:59</text>
+<input class="input"  wx:if="{{flag}}" bindinput="inputfun" name="other" placeholder="来说点什么吧~" type="text"/>
+  <view>
+    <button class="cbuttonl" bindtap="paihang">查看排行</button>
+    <button bindtap="commitbutton" wx:if="{{flag}}" class="cbuttonr">发布打卡</button>
+  </view>
+   
+</view>

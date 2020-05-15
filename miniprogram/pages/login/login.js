@@ -28,6 +28,7 @@ Page({
         this.setData({
           openid: openid
         })
+        app.globalData.openid = openid
       }
     })
   },
@@ -42,6 +43,7 @@ Page({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
           console.log("用户授权了");
+          that.getOpenid();
           info.where({"_openid":that.openid}).get().then(res=>{console.log(res);
           that.setData({list: res.data});
           console.log(that.data.list.length);
@@ -51,7 +53,8 @@ Page({
               info.where({ "_openid": that.openid}).get().then(res => {
                 app.globalData.idcache = res.data[0]._id;
                 app.globalData.major = res.data[0].major;
-                app.globalData.sem = res.data[0].sem;
+                app.globalData.pic = res.data[0].avatarUrl;
+                app.globalData.nickName = res.data[0].nickName;
                 console.log('major:', app.globalData.major);
               })
               wx.switchTab({
@@ -79,7 +82,6 @@ Page({
       var that = this;
       // 获取到用户的信息了，打印到控制台上看下
       that.getOpenid();
-      //app.globalData.openid = that.openid;
       console.log("用户的信息如下：");
       console.log(res.detail.userInfo);
       setTimeout(function () {
@@ -87,14 +89,15 @@ Page({
         if(that.data.list.length==0){
           info.add({
             data: {
-              major: 0,
-              sem: 0,
+              major: 4,
               nickName: res.detail.userInfo.nickName,
               avatarUrl: res.detail.userInfo.avatarUrl,
             },
             success: function (res) {
               console.log(res._id)
               app.globalData.idcache = res._id;
+              app.globalData.pic = res.avatarUrl;
+              app.globalData.nickName = res.nickName;
               console.log(app.globalData.idcache);
             },
           })

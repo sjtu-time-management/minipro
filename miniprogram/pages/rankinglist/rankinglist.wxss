@@ -1,0 +1,45 @@
+.rankinglist1{
+  display: flex;
+  padding: 30rpx;
+  margin:20rpx 20rpx;
+  background-color: #FFFAF0;
+  border: solid 1px black;
+}
+.index{
+  width: 100rpx;
+  font-weight: bold;
+  margin-top:10rpx;
+}
+.username{
+  width: 320rpx;
+  margin-left: 30rpx;
+  margin-top:10rpx;
+}
+.pic{
+  width:80rpx;
+  height:80rpx;
+  margin-top:10rpx;
+}
+.score{
+  color: rgb(241, 208, 19);
+  font-weight: bold;
+  margin-top:10rpx;
+}
+.medal{
+  width: 40rpx;
+  height: 50rpx;
+  margin-right: 40rpx;
+  margin-top:10rpx;
+}
+.gif1{
+height: 80rpx;
+width: 80rpx;
+}
+.gifview{
+  display: flex;
+  justify-content: center;
+}
+.title{
+  font-size: 60rpx;
+  font-weight: bold;
+}

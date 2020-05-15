@@ -823,11 +823,9 @@ Page({
   //获取major以及必修课
     db.collection('id-major').get({
       success: res => {
-        //console.log(111)
-        app.globalData.major = res.data
-        //console.log(app.globalData.major[0].major)
+        app.globalData.major = res.data[0].major
         db.collection('bixiu').where({
-          major: app.globalData.major[0].major
+          major: app.globalData.major
         }). get({
           success: res => {
             console.log(res.data)

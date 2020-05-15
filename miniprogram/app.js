@@ -17,11 +17,12 @@ App({
     }
 
     this.globalData = {
-      major: 0,
-      sem: 0,
+      major: 4,
       bixiuss:[],
       idcache:0,
       openid:0,
+      nickName:'',
+      pic:'/images/user-unlogin.png'
     }
   }
 })

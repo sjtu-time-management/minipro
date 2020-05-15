@@ -5,8 +5,9 @@
     "pages/homepage/homepage",
     "pages/timetable/timetable",
     "pages/newevent/newevent",
-    "pages/newclass/newclass"
-    
+    "pages/newclass/newclass",
+    "pages/clockin/clockin",
+    "pages/rankinglist/rankinglist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -24,6 +25,12 @@
         "pagePath": "pages/timetable/timetable",
         "iconPath": "icons/tmtbicon.jpg",
         "selectedIconPath": "icons/tmtbiconb.jpg"
+      },
+      {
+        "text": "打卡",
+        "pagePath": "pages/clockin/clockin",
+        "iconPath": "icons/clockinicon.png",
+        "selectedIconPath": "icons/sclockinicon.jpg"
       },
       {
         "text": "关于",

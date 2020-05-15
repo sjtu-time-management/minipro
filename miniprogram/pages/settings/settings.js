@@ -14,8 +14,8 @@ Page({
     //openid:'',
     array: ['信息安全', '信息工程', '计算机科学与技术', '测控技术与仪器'],
     sem_array: ['大一上','大一下','大二上','大二下','大三上','大三下','大四上','大四下'],
-    index: app.globalData.major,
-    sem_index: app.globalData.sem,
+    index: (app.globalData.major - 1 - (app.globalData.major + 7) % 8) / 8,
+    sem_index: (app.globalData.major + 7) % 8,
     pic: '/images/user-unlogin.png',
     nickName: '',
   },
@@ -49,9 +49,11 @@ Page({
   
   onLoad:function(e){
     //this.getOpenid();
+    var tmp = app.globalData.major;
+    var tmp1 = (tmp + 7)%8
     this.setData({
-      index: app.globalData.major,
-      sem_index: app.globalData.sem,
+      index: (tmp-1-tmp1)/8,
+      sem_index: tmp1,
     });
     info.doc(app.globalData.idcache).get().then(res => {
       this.setData({
@@ -59,22 +61,24 @@ Page({
         pic: res.data.avatarUrl,
       })
     })
+    console.log("tmp=", tmp);
+    console.log("index=", this.data.index);
+    console.log("sem_index=", this.data.sem_index);
   },
   
   onSave:function(e){
-    console.log(this.data.index);
+    console.log("index=", this.data.index);
+    console.log("sem_index=", this.data.sem_index);
+    var tmp = 8*parseInt(this.data.index)+1+parseInt(this.data.sem_index);
     info.doc(app.globalData.idcache).update({
       data:{
-        'major':parseInt(this.data.index),
-        'sem':parseInt(this.data.sem_index)
+        'major':tmp,
         },
       success: function(res){
         console.log('db updated');
       },
     });
-    console.log('sem_index:', this.data.sem_index);
-    app.globalData.major = this.data.index;
-    app.globalData.sem = this.data.sem_index;
+    app.globalData.major = tmp;
     console.log(app.globalData.major);
     wx.switchTab({
       url: '../homepage/homepage',
