@@ -4,6 +4,7 @@
   margin:20rpx 20rpx;
   background-color: #FFFAF0;
   border: solid 1px black;
+  height: 120rpx;
 }
 .evttag{
   font-size: 50rpx;
@@ -25,21 +26,27 @@
 
 .addbutton{
   display:flex;
-  font-size: 40rpx;
-  font-weight: bold;
-  height: 90rpx;
-  margin-top: -25rpx;
+  margin-left: -28rpx;
+  margin-right: -28rpx;
+  height: 100rpx;
 }
 .add{
-  background-color:#B22222;
-  color: white;
-  border: solid 1px black;
+  background-color:transparent;
+  border: none;
+  height: 100rpx;
+  width: 250rpx;
+}
+.add::after{
+  background-color:transparent;
+  border: none;
+  height: 100rpx;
+  width: 250rpx;
+  z-index: -1;
 }
 .delete{
   color: red;
 }
 .hiddenpart{
-  margin-top: 300rpx;
   color: gray;
   text-align: center;
   font-size: 35rpx;
@@ -47,4 +54,40 @@
 }
 .count{
   margin-left: 30rpx;
+}
+/* 一下左右滑动 */
+.nav{
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx;
+  background-color: rgb(129, 241, 55);
+  font-size: 30rpx;
+}
+.nav-switch-style{
+  color: snow;
+}
+.style-default{
+  background-color: rgb(247, 229, 130);
+  padding: 30rpx 0;
+  text-align: center;
+}
+.style-roll{
+  background-color: rgb(130, 177, 247);
+  padding:10px 5px 15px 10px; 
+  height:1100rpx; 
+  /* text-align: center;   */
+}
+.currentday{
+  display: flex;
+  height: 100rpx;
+ background-color: rgb(247, 229, 130);
+ justify-content: center;
+}
+
+.buttonimg{
+  background-color:transparent;
+  border: none;
+  height: 100rpx;
+  width: 200rpx;
+  margin-left: -10rpx;
 }

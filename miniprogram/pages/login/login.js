@@ -51,7 +51,7 @@ Page({
               info.where({ "_openid": that.openid}).get().then(res => {
                 app.globalData.idcache = res.data[0]._id;
                 app.globalData.major = res.data[0].major;
-                app.globalData.sem = res.data[0].major;
+                app.globalData.sem = res.data[0].sem;
                 console.log('major:', app.globalData.major);
               })
               wx.switchTab({

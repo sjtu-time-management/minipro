@@ -1,26 +1,202 @@
+
 <view class="addbutton">
-<button class="add" bindtap="addnewevent" loading="{{loading}}" disabled="{{disabled}}">+事件</button>
-<button class="add" bindtap="addnewclass" loading="{{loading}}" disabled="{{disabled}}">+课程</button>
-<!-- <button class="add" bindtap="hebing" loading="{{loading}}" disabled="{{disabled}}">shuaxin</button> -->
+<button class="add" bindtap="addnewevent" loading="{{loading}}" disabled="{{disabled}}">
+<image src="/images/button0.jpg" class="buttonimg" ></image>
+</button>
+
+<image src="/images/shijianbiao.jpg" style="height:100rpx;width:300rpx;"></image>
+
+<button class="add" bindtap="addnewclass" loading="{{loading}}" disabled="{{disabled}}">
+<image src="/images/button1.jpg" class="buttonimg"></image>
+</button>
 </view>
 <!-- change1 -->
-<view class="timetable1" wx:for="{{records}}">
 
-  <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
-  <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+<!-- 以下左右滑动 -->
+<view class="nav">
+  <view bindtap="navSwitch" data-index="0" class="{{navState==0 ? 'nav-switch-style':''}}">today0</view>
+  <view bindtap="navSwitch" data-index="1" class="{{navState==1 ? 'nav-switch-style':''}}">1</view>
+  <view bindtap="navSwitch" data-index="2" class="{{navState==2 ? 'nav-switch-style':''}}">2</view>
+  <view bindtap="navSwitch" data-index="3" class="{{navState==3 ? 'nav-switch-style':''}}">3</view>
+  <view bindtap="navSwitch" data-index="4" class="{{navState==4 ? 'nav-switch-style':''}}">4</view>
+  <view bindtap="navSwitch" data-index="5" class="{{navState==5 ? 'nav-switch-style':''}}">5</view>
+  <view bindtap="navSwitch" data-index="6" class="{{navState==6 ? 'nav-switch-style':''}}">6</view>
+</view>
+<!-- 不可滑动页 -->
+<view class="currentday">
+  <image src="/images/d0.jpg" style="height:100rpx;width:180rpx;"></image>
+  <view wx:if="{{navState==0}}" class="style-default">today0</view>
+  <view wx:elif="{{navState==1}}" class="style-default">today+1</view>
+  <view wx:elif="{{navState==2}}" class="style-default">today+2</view>
+  <view wx:elif="{{navState==3}}" class="style-default">today+3</view>
+  <view wx:elif="{{navState==4}}" class="style-default">today+4</view>
+  <view wx:elif="{{navState==5}}" class="style-default">today+5</view>
+  <view wx:else="{{navState==6}}" class="style-default">today+6</view>
+  <image src="/images/d1.jpg" style="height:100rpx;width:180rpx;"></image>
+</view>
+<!-- 滑动页 -->
+<swiper bindchange="bindchange" current="{{navState}}" style="height:{{swiperheight}}rpx" class="swiper">
+  <block>
+    <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records}}">
 
-  <view class="rightside">
-    <text>{{item.idetail}}</text>
-    <text>{{dates}}</text>
-    <text>  {{item.cstart}}~{{item.cend}}</text>
-  </view>
-  <text class="delete" catchtap="deleteEvent" 
-  data-index="{{index}}">删除</text>
-</view>
-<view hidden="{{records.length}}" >
-<text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
-</view>
-<view wx:if="{{records.length}}" >
-<text class="count">共{{records.length}}项</text>
-</view>
-<text bindtap="test111">testtest</text>
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records.length}}" >
+        <text class="count">共{{records.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+   <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records1}}">
+
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates1}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent1" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records1.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records1.length}}" >
+        <text class="count">共{{records1.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records2}}">
+
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates2}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent2" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records2.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records2.length}}" >
+        <text class="count">共{{records2.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records3}}">
+
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates3}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent3" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records3.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records3.length}}" >
+        <text class="count">共{{records3.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records4}}">
+
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates4}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent4" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records4.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records4.length}}" >
+        <text class="count">共{{records4.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records5}}">
+
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates5}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent5" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records5.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records5.length}}" >
+        <text class="count">共{{records5.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="style-roll">
+        <view class="timetable1" wx:for="{{records6}}">
+
+         <text class="evttag" wx:if="{{item.itag.length<=4}}">{{item.itag}}</text>
+         <text class="evttag2" wx:if="{{item.itag.length>4}}">{{item.itag}}</text>
+
+         <view class="rightside">
+           <text>{{item.idetail}}</text>
+           <text>{{dates6}}</text>
+           <text>  {{item.cstart}}~{{item.cend}}</text>
+         </view>
+         <text class="delete" catchtap="deleteEvent6" 
+         data-index="{{index}}">删除</text>
+        </view>
+        <view hidden="{{records6.length}}" >
+        <text class="hiddenpart">暂无待办，快点击顶部加号添加吧~</text>
+        </view>
+        <view wx:if="{{records6.length}}" >
+        <text class="count">共{{records6.length}}项</text>
+        </view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>

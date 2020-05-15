@@ -14,13 +14,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
-  //  nickName: "",
-    // avatarUrl: "",
-    //casArray: ['双眼皮', 'TBM', '隆胸', '减肥', '手动输入'],
-    // userName: '',
-    // mobile: '',
-    // Gender: 'female',
     casIndex: 0,
     casIndex2:0,
     casIndex3: 0,
@@ -188,15 +181,6 @@ Page({
     const db = wx.cloud.database({
       env: 'engineering-dvsy5'
     })
-    //  db.collection('bixiu').get({
-      // success: res => {
-        //  console.log(res.data)
-        //  this.setData({
-          //  bixius: res.data
-        //  })
-      //  }
-    //  })
-    //  console.log(this.data.bixius[0].num)
 
     var i;
     if (!this.data.classes[0]) {
@@ -237,19 +221,6 @@ Page({
     setTimeout(function () {
       wx.navigateBack({})
     }, 500)
-  },
-
-  /**a:function(){
-    var i;
-    if(!this.data.classes[0]){
-      for (i = 0; i < this.data.bixius.length; i++) {
-      console.log(this.data.bixius[i].major1),
-        this.setData({
-          classes: this.data.classes.concat(this.data.bixius[i].major1)
-        })
-    }
-    }
-
   },
 
   /**
