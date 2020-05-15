@@ -1,9 +1,12 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/settings/settings",
     "pages/homepage/homepage",
     "pages/timetable/timetable",
     "pages/newevent/newevent",
     "pages/newclass/newclass"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

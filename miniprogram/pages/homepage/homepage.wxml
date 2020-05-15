@@ -5,5 +5,5 @@
     <text>一款为交大同学量身定制的</text>
     <text>时间管理系统</text>
   </view>
-  <navigator url="/pages/timetable/timetable" open-type="switchTab" hover-class="starterclicked" class="starterdefault">开始使用</navigator>
+  <navigator url="/pages/settings/settings" open-type="navigate" hover-class="starterclicked" class="starterdefault">个人信息与偏好设置</navigator>
 </view>

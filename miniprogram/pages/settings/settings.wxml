@@ -1,0 +1,24 @@
+<!--miniprogram/pages/settings/settings.wxml-->
+<view class='container'>
+  <image class="avatar" src='{{pic}}'></image>
+  <view class="bottom">{{nickName}}</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      选择专业：{{array[index]}}
+    </view>
+  </picker>
+  <picker bindchange="bindPickerChange2" value="{{sem_index}}" range="{{sem_array}}">
+    <view class="picker">
+      选择学期：{{sem_array[sem_index]}}
+    </view>
+  </picker>
+  <navigator url="/pages/homepage/homepage" open-type="switchTab" hover-class="bottom" class="bottom">
+  返回主页
+  </navigator>
+  <view class="bottom">
+    <button class="bottom" bindtap="onSave">保存</button>
+  </view>
+
+</view>
+
+
