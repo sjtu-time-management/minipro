@@ -25,7 +25,6 @@ Page({
     disabled: false,
     dayofweek: '',
     navState: 0 ,//导航状态
-    d2: '',
     t0:'',
     t1:'',
     t2:'',
@@ -45,7 +44,9 @@ Page({
     dates4:'',
     dates5:'',
     dates6:'',
-    swiperheight:0
+    swiperheight:0,
+    weather: { 'wea_img': 'qing' },//实况天气
+    weatherweek: [],//七日天气
   },
   bindchange(e) {
     // console.log(e.detail.current)
@@ -130,6 +131,7 @@ Page({
   //需要和gsh交互!!!!!!!!!!!!!!!!!
   deleteEvent: function(e) {
     console.log(e);
+    let j=0;
     var index = e.currentTarget.dataset.index;
     var records = this.data.records;
     db.collection('test2').doc(this.data.records[index]._id).remove({
@@ -139,11 +141,18 @@ Page({
         })
       },
       fail: err => {
+        console.log(121);
+      }
+    })
+    db.collection('test3').doc(this.data.records[index]._id).remove({
+      success: res => {
+        console.log(131);
         wx.showToast({
-          icon: 'none',
-          title: '删除失败',
+          title: '删除成功',
         })
-        console.error('[数据库] [删除记录] 失败：', err)
+      },
+      fail: err => {
+        console.log(141);
       }
     })
     records.splice(index, 1);
@@ -152,6 +161,7 @@ Page({
     });
     wx.setStorageSync('records', this.data.records);
   },
+  // 优化，写成类/删除失败
   deleteEvent1: function (e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
@@ -298,9 +308,6 @@ Page({
   },
   onShow: function() {
     var myDate = new Date(); 
-    this.setData({
-      d2: myDate.getDay()
-    })//以上是周几的函数
 
     //this.onLoad()
     var that = this;
@@ -463,92 +470,8 @@ Page({
       console.log(that.data.dates6)
     }
     //星期几
-    var numofday = 0;
-    if (this.data.dates[3] == 0) {
-      numofday += 0;
-      if (this.data.dates[5] == 0 && this.data.dates[6] == 1) {
-        numofday += 0;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 2) {
-        numofday += 31;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 3) {
-        numofday += 60;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 4) {
-        numofday += 91;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 5) {
-        numofday += 121;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 6) {
-        numofday += 152;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 7) {
-        numofday += 182;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 8) {
-        numofday += 213;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 9) {
-        numofday += 244;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 0) {
-        numofday += 274;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 1) {
-        numofday += 305;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 2) {
-        numofday += 335;
-      }
-    } else if (this.data.dates[3] == 1) {
-      numofday += 366;
-      if (this.data.dates[5] == 0 && this.data.dates[6] == 1) {
-        numofday += 0;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 2) {
-        numofday += 31;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 3) {
-        numofday += 59;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 4) {
-        numofday += 90;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 5) {
-        numofday += 120;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 6) {
-        numofday += 151;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 7) {
-        numofday += 181;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 8) {
-        numofday += 212;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 9) {
-        numofday += 243;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 0) {
-        numofday += 273;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 1) {
-        numofday += 304;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 2) {
-        numofday += 334;
-      }
-    } else if (this.data.dates[3] == 2) {
-      numofday += 731;
-      if (this.data.dates[5] == 0 && this.data.dates[6] == 1) {
-        numofday += 0;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 2) {
-        numofday += 31;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 3) {
-        numofday += 59;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 4) {
-        numofday += 90;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 5) {
-        numofday += 120;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 6) {
-        numofday += 151;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 7) {
-        numofday += 181;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 8) {
-        numofday += 212;
-      } else if (this.data.dates[5] == 0 && this.data.dates[6] == 9) {
-        numofday += 243;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 0) {
-        numofday += 273;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 1) {
-        numofday += 304;
-      } else if (this.data.dates[5] == 1 && this.data.dates[6] == 2) {
-        numofday += 334;
-      }
-    }
-    numofday += (this.data.dates[8] + this.data.dates[9] - 1);
     this.setData({
-      dayofweek: ((numofday % 7) + 3) % 7
+      dayofweek: myDate.getDay()
     })
 
     var app = getApp();
@@ -839,6 +762,64 @@ Page({
     
   },
   onLoad: function(options) {
-
+    this.getapi();
+  },
+  getapi: function () {
+    var _this = this;
+    // 获取IP地址
+    wx.request({
+      url: 'https://tianqiapi.com/ip/?version=v6&appid=42921851&appsecret=ubJcta4Y',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+        // 根据IP获取天气数据
+        _this.weathertoday(res.data.ip); _this.weatherweekday(res.data.ip);
+      }
+    });
+  },
+  // 天气api实况天气
+  weathertoday: function (ip) {
+    var _this = this;
+    wx.request({
+      url: 'https://www.tianqiapi.com/api/?version=v6&appid=42921851&appsecret=ubJcta4Y',
+      data: {
+        'ip': ip
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        _this.setData({
+          weather: res.data
+        });
+        console.log(_this.data.weather)
+      }
+    });
+  },
+  // 天气api实况天气
+  weatherweekday: function (ip) {
+    var _this = this;
+    wx.request({
+      url: 'https://www.tianqiapi.com/api/?version=v1&appid=42921851&appsecret=ubJcta4Y',
+      data: {
+        'ip': ip
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        _this.setData({
+          weatherweek: res.data
+        });
+        console.log(_this.data.weatherweek)
+      }
+    });
   },
 })

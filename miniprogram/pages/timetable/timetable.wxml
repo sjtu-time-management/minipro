@@ -25,13 +25,13 @@
 <!-- 不可滑动页 -->
 <view class="currentday">
   <image src="/images/d0.jpg" style="height:100rpx;width:180rpx;"></image>
-  <view wx:if="{{navState==0}}" class="style-default">today0</view>
-  <view wx:elif="{{navState==1}}" class="style-default">today+1</view>
-  <view wx:elif="{{navState==2}}" class="style-default">today+2</view>
-  <view wx:elif="{{navState==3}}" class="style-default">today+3</view>
-  <view wx:elif="{{navState==4}}" class="style-default">today+4</view>
-  <view wx:elif="{{navState==5}}" class="style-default">today+5</view>
-  <view wx:else="{{navState==6}}" class="style-default">today+6</view>
+  <view wx:if="{{navState==0}}" class="style-default">{{weatherweek.data[0].week}}</view>
+  <view wx:elif="{{navState==1}}" class="style-default">{{weatherweek.data[1].week}}</view>
+  <view wx:elif="{{navState==2}}" class="style-default">{{weatherweek.data[2].week}}</view>
+  <view wx:elif="{{navState==3}}" class="style-default">{{weatherweek.data[3].week}}</view>
+  <view wx:elif="{{navState==4}}" class="style-default">{{weatherweek.data[4].week}}</view>
+  <view wx:elif="{{navState==5}}" class="style-default">{{weatherweek.data[5].week}}</view>
+  <view wx:else="{{navState==6}}" class="style-default">{{weatherweek.data[6].week}}</view>
   <image src="/images/d1.jpg" style="height:100rpx;width:180rpx;"></image>
 </view>
 <!-- 滑动页 -->
@@ -200,3 +200,16 @@
     </swiper-item>
   </block>
 </swiper>
+<!-- 存在天气最开始是第一页的高度的问题 -->
+<view >
+  <view wx:if="{{navState==0}}" class="style-default">{{weatherweek.data[0].wea}} - {{weatherweek.data[0].tem1}}/{{weatherweek.data[0].tem2}}</view>
+  <view wx:elif="{{navState==1}}" class="style-default">{{weatherweek.data[1].wea}} - {{weatherweek.data[1].tem1}}/{{weatherweek.data[1].tem2}}</view>
+  <view wx:elif="{{navState==2}}" class="style-default">{{weatherweek.data[2].wea}} - {{weatherweek.data[2].tem1}}/{{weatherweek.data[2].tem2}}</view>
+  <view wx:elif="{{navState==3}}" class="style-default">{{weatherweek.data[3].wea}} - {{weatherweek.data[3].tem1}}/{{weatherweek.data[3].tem2}}</view>
+  <view wx:elif="{{navState==4}}" class="style-default">{{weatherweek.data[4].wea}} - {{weatherweek.data[4].tem1}}/{{weatherweek.data[4].tem2}}</view>
+  <view wx:elif="{{navState==5}}" class="style-default">{{weatherweek.data[5].wea}} - {{weatherweek.data[5].tem1}}/{{weatherweek.data[5].tem2}}</view>
+  <view wx:else="{{navState==6}}" class="style-default">{{weatherweek.data[6].wea}} - {{weatherweek.data[6].tem1}}/{{weatherweek.data[6].tem2}}</view>
+</view>
+<!-- 以下天气部分 -->
+
+
