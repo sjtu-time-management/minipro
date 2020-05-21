@@ -1,4 +1,3 @@
-
 wx.cloud.init({
   env: 'engineering-dvsy5'
 })
@@ -10,6 +9,26 @@ const test3 = db.collection('test3')
 const idmajor = db.collection('id-major')
 var app = getApp();
 var util = require('../../utils/util.js'); //获取时间
+
+const buttons = [{
+    label: '添加事件',
+    icon: '/icons/shi.jpg'
+  },
+  {
+    label: '添加课程',
+    icon: '/icons/ke.jpg'
+  },
+  {
+    label: '前往打卡',
+    icon: '/icons/ka.jpg'
+  },
+  {
+    openType: 'share',
+    label: '分享',
+    icon: '/icons/xiang.jpg'
+  },
+]
+
 Page({
   data: {
     records: [],
@@ -24,38 +43,60 @@ Page({
     loading: false,
     disabled: false,
     dayofweek: '',
-    navState: 0 ,//导航状态
-    t0:'',
-    t1:'',
-    t2:'',
-    t3:'',
-    t4:'',
-    t5:'',
-    t6:'',
-    m1:'',
-    m2:'',
-    m3:'',
-    m4:'',
-    m5:'',
-    m6:'',
-    dates1:'',
-    dates2:'',
-    dates3:'',
-    dates4:'',
-    dates5:'',
-    dates6:'',
-    swiperheight:0,
-    weather: { 'wea_img': 'qing' },//实况天气
-    weatherweek: [],//七日天气
+    navState: 0, //导航状态
+    t0: '',
+    t1: '',
+    t2: '',
+    t3: '',
+    t4: '',
+    t5: '',
+    t6: '',
+    m1: '',
+    m2: '',
+    m3: '',
+    m4: '',
+    m5: '',
+    m6: '',
+    dates1: '',
+    dates2: '',
+    dates3: '',
+    dates4: '',
+    dates5: '',
+    dates6: '',
+    swiperheight: 0,
+    weather: {
+      'wea_img': 'qing'
+    }, //实况天气
+    weatherweek: [], //七日天气
+    buttons
   },
+
+  onClick(e) {
+    console.log('onClick', e.detail)
+    if (e.detail.index === 0) {
+      wx.navigateTo({
+        url: '/pages/newevent/newevent',
+      })
+    }
+    if (e.detail.index === 1) {
+      wx.navigateTo({
+        url: '/pages/newclass/newclass',
+      })
+    }
+    if (e.detail.index === 2) {
+      wx.switchTab({
+        url: '/pages/clockin/clockin',
+      })
+    }
+  },
+
   bindchange(e) {
     // console.log(e.detail.current)
     let index = e.detail.current;
     this.setData({
       navState: index
     })
-    if (index==0)
-    {
+    if (index == 0) {
       var h = this.data.records.length;
       this.setData({
         swiperheight: h * 200 + 100
@@ -84,13 +125,13 @@ Page({
       this.setData({
         swiperheight: h * 200 + 100
       })
-    } 
+    }
     if (index == 5) {
       var h = this.data.records5.length;
       this.setData({
         swiperheight: h * 200 + 100
       })
-    } 
+    }
     if (index == 6) {
       var h = this.data.records6.length;
       this.setData({
@@ -100,7 +141,7 @@ Page({
 
   },
   //点击导航
-  navSwitch: function (e) {
+  navSwitch: function(e) {
     // console.log(e.currentTarget.dataset.index)
     let index = e.currentTarget.dataset.index;
     this.setData({
@@ -131,7 +172,7 @@ Page({
   //需要和gsh交互!!!!!!!!!!!!!!!!!
   deleteEvent: function(e) {
     console.log(e);
-    let j=0;
+    let j = 0;
     var index = e.currentTarget.dataset.index;
     var records = this.data.records;
     db.collection('test2').doc(this.data.records[index]._id).remove({
@@ -162,7 +203,7 @@ Page({
     wx.setStorageSync('records', this.data.records);
   },
   // 优化，写成类/删除失败
-  deleteEvent1: function (e) {
+  deleteEvent1: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records1;
@@ -186,7 +227,7 @@ Page({
     });
     wx.setStorageSync('records', this.data.records1);
   },
-  deleteEvent2: function (e) {
+  deleteEvent2: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records2;
@@ -210,7 +251,7 @@ Page({
     });
     wx.setStorageSync('records', this.data.records2);
   },
-  deleteEvent3: function (e) {
+  deleteEvent3: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records3;
@@ -234,7 +275,7 @@ Page({
     });
     wx.setStorageSync('records', this.data.records3);
   },
-  deleteEvent4: function (e) {
+  deleteEvent4: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records4;
@@ -258,7 +299,7 @@ Page({
     });
     wx.setStorageSync('records', this.data.records4);
   },
-  deleteEvent5: function (e) {
+  deleteEvent5: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records5;
@@ -282,7 +323,7 @@ Page({
     });
     wx.setStorageSync('records', this.data.records5);
   },
-  deleteEvent6: function (e) {
+  deleteEvent6: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records6;
@@ -307,7 +348,7 @@ Page({
     wx.setStorageSync('records', this.data.records6);
   },
   onShow: function() {
-    var myDate = new Date(); 
+    var myDate = new Date();
 
     //this.onLoad()
     var that = this;
@@ -323,11 +364,11 @@ Page({
     console.log(that.data.dates)
     console.log(12138)
     that.setData({
-      t0:Number(time[8])*10+Number(time[9])
+      t0: Number(time[8]) * 10 + Number(time[9])
     })
     console.log(that.data.t0)
     that.setData({
-      t1:(that.data.t0+1)%31,
+      t1: (that.data.t0 + 1) % 31,
     })
     that.setData({
       t2: (that.data.t1 + 1) % 31,
@@ -344,13 +385,14 @@ Page({
     that.setData({
       t6: (that.data.t5 + 1) % 31,
     })
-    if(that.data.t1 < that.data.t0)
-    {that.setData({
-      m1:"6"})
-    }else
-    {
+    if (that.data.t1 < that.data.t0) {
       that.setData({
-        m1: time[6] })
+        m1: "6"
+      })
+    } else {
+      that.setData({
+        m1: time[6]
+      })
     }
     console.log(that.data.m1)
     if (that.data.t2 < that.data.t0) {
@@ -372,7 +414,7 @@ Page({
         m3: time[6]
       })
     }
-    
+
     if (that.data.t4 < that.data.t0) {
       that.setData({
         m4: "6"
@@ -400,22 +442,23 @@ Page({
         m6: time[6]
       })
     }
-    if(that.data.t1<10){
-    that.setData({
-      dates1: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m1 + '-'  +'0'+ String(that.data.t1) });
-    console.log(that.data.dates1)}
-    else{
+    if (that.data.t1 < 10) {
       that.setData({
-        dates1: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m1 + '-'  + String     (that.data.t1)
-      }); 
-      console.log(that.data.dates1) }
+        dates1: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m1 + '-' + '0' + String(that.data.t1)
+      });
+      console.log(that.data.dates1)
+    } else {
+      that.setData({
+        dates1: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m1 + '-' + String(that.data.t1)
+      });
+      console.log(that.data.dates1)
+    }
     if (that.data.t2 < 10) {
       that.setData({
         dates2: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m2 + '-' + '0' + String(that.data.t2)
       });
       console.log(that.data.dates2)
-    }
-    else {
+    } else {
       that.setData({
         dates2: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m2 + '-' + String(that.data.t2)
       });
@@ -426,8 +469,7 @@ Page({
         dates3: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m3 + '-' + '0' + String(that.data.t3)
       });
       console.log(that.data.dates3)
-    }
-    else {
+    } else {
       that.setData({
         dates3: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m3 + '-' + String(that.data.t3)
       });
@@ -438,8 +480,7 @@ Page({
         dates4: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m4 + '-' + '0' + String(that.data.t4)
       });
       console.log(that.data.dates4)
-    }
-    else {
+    } else {
       that.setData({
         dates4: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m4 + '-' + String(that.data.t4)
       });
@@ -450,8 +491,7 @@ Page({
         dates5: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m5 + '-' + '0' + String(that.data.t5)
       });
       console.log(that.data.dates5)
-    }
-    else {
+    } else {
       that.setData({
         dates5: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m5 + '-' + String(that.data.t5)
       });
@@ -462,8 +502,7 @@ Page({
         dates6: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m6 + '-' + '0' + String(that.data.t6)
       });
       console.log(that.data.dates6)
-    }
-    else {
+    } else {
       that.setData({
         dates6: time[0] + time[1] + time[2] + time[3] + '-' + time[5] + that.data.m6 + '-' + String(that.data.t6)
       });
@@ -512,19 +551,20 @@ Page({
               }
             }
             that.setData({
-              records: newrec,},
+                records: newrec,
+              },
               () => {
                 var h = this.data.records.length;
                 this.setData({
                   swiperheight: h * 200 + 100
-                })  
+                })
               }
             )
             //end
           }
         })
-        
-       
+
+
       }
     })
     db.collection('test2').where({
@@ -536,7 +576,7 @@ Page({
           records1: res.data
         })
         db.collection('test3').where({
-          cdow: (that.data.dayofweek+1)%7
+          cdow: (that.data.dayofweek + 1) % 7
         }).get({
           success: res => {
             console.log(res.data)
@@ -572,7 +612,7 @@ Page({
           records2: res.data
         })
         db.collection('test3').where({
-          cdow: (that.data.dayofweek + 2)%7
+          cdow: (that.data.dayofweek + 2) % 7
         }).get({
           success: res => {
             console.log(res.data)
@@ -608,7 +648,7 @@ Page({
           records3: res.data
         })
         db.collection('test3').where({
-          cdow: (that.data.dayofweek + 3)%7
+          cdow: (that.data.dayofweek + 3) % 7
         }).get({
           success: res => {
             console.log(res.data)
@@ -644,7 +684,7 @@ Page({
           records4: res.data
         })
         db.collection('test3').where({
-          cdow: (that.data.dayofweek + 4)%7
+          cdow: (that.data.dayofweek + 4) % 7
         }).get({
           success: res => {
             console.log(res.data)
@@ -680,7 +720,7 @@ Page({
           records5: res.data
         })
         db.collection('test3').where({
-          cdow: (that.data.dayofweek + 5)%7
+          cdow: (that.data.dayofweek + 5) % 7
         }).get({
           success: res => {
             console.log(res.data)
@@ -716,7 +756,7 @@ Page({
           records6: res.data
         })
         db.collection('test3').where({
-          cdow: (that.data.dayofweek + 6)%7
+          cdow: (that.data.dayofweek + 6) % 7
         }).get({
           success: res => {
             console.log(res.data)
@@ -743,47 +783,47 @@ Page({
         })
       }
     })
-  //获取major以及必修课
+    //获取major以及必修课
     db.collection('id-major').get({
       success: res => {
         app.globalData.major = res.data[0].major
         db.collection('bixiu').where({
           major: app.globalData.major
-        }). get({
+        }).get({
           success: res => {
             console.log(res.data)
             app.globalData.bixiuss = res.data
-           
+
           }
         })
 
       }
     })
-    
+
   },
   onLoad: function(options) {
     this.getapi();
   },
-  getapi: function () {
+  getapi: function() {
     var _this = this;
     // 获取IP地址
     wx.request({
       url: 'https://tianqiapi.com/ip/?version=v6&appid=42921851&appsecret=ubJcta4Y',
-      data: {
-      },
+      data: {},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         // 根据IP获取天气数据
-        _this.weathertoday(res.data.ip); _this.weatherweekday(res.data.ip);
+        _this.weathertoday(res.data.ip);
+        _this.weatherweekday(res.data.ip);
       }
     });
   },
   // 天气api实况天气
-  weathertoday: function (ip) {
+  weathertoday: function(ip) {
     var _this = this;
     wx.request({
       url: 'https://www.tianqiapi.com/api/?version=v6&appid=42921851&appsecret=ubJcta4Y',
@@ -794,7 +834,7 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           weather: res.data
         });
@@ -803,7 +843,7 @@ Page({
     });
   },
   // 天气api实况天气
-  weatherweekday: function (ip) {
+  weatherweekday: function(ip) {
     var _this = this;
     wx.request({
       url: 'https://www.tianqiapi.com/api/?version=v1&appid=42921851&appsecret=ubJcta4Y',
@@ -814,7 +854,7 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           weatherweek: res.data
         });

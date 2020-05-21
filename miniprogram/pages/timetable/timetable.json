@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "我的时间表"
+  "navigationBarTitleText": "我的时间表",
+  "usingComponents": {
+    "wux-fab-button": "../../dist/fab-button/index"
+  }
 }

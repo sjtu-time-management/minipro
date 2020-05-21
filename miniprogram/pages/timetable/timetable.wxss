@@ -73,7 +73,7 @@
   /* text-align: center; */
 }
 .style-roll{
-  background-color: rgb(130, 177, 247);
+  background-color:transparent;
   padding:10px 5px 15px 10px; 
   height:1100rpx; 
   /* text-align: center;   */
@@ -98,3 +98,10 @@
 }
 .padb{padding-bottom: 15rpx;}
 /* pages/timemanagement/timemanagement.wxss */
+
+.bkimg{
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
