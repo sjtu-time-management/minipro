@@ -1,89 +1,94 @@
-<text>事件关键字：</text>
-<input bindinput='inputTag' placeholder='最多输入3个字' maxlength="3" style='border:1rpx solid #000;' class="shurukuang"></input>
-<text>详细信息：</text>
-<input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;' class="shurukuang"></input>
-<!-- <text>日期：</text> 
-<view class="timeinput">
-  <input bindinput='inputYear' class="shortinput"></input>
-  <text>年</text>
-  <input bindinput='inputMonth' class="shortinput"></input>
-  <text>月</text>
-  <input bindinput='inputDate' class="shortinput"></input>
-  <text>日</text>
+<image src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ps5(添加事件界面 (1).gif" class="bkimg" mode="aspectFill"></image>
+<view class="bzt">
+<wux-steps current="{{ current }}" >
+  <wux-step title="事件内容"></wux-step>
+  <wux-step title="事件时间"></wux-step>
+  <wux-step title="设置提醒"></wux-step>
+</wux-steps>
 </view>
-<text>开始时间与结束时间</text>
-<view class="timeinput">
-<input bindinput='inputStartHour' class="shortinput2"></input>
-  <text> : </text>
-  <input bindinput='inputStartMin' class="shortinput2"></input>
-  <text> ~ </text>
-  <input bindinput='inputEndHour' class="shortinput2"></input>
-  <text> : </text>
-  <input bindinput='inputEndMin' class="shortinput2"></input>
-</view>-->
-<view class="timeselect">
-  <text class="texts"> 时间 : </text>
-  <view class="section">
-
-    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
-
-      <view class="picker">
-
-       {{cstart}}
-
-      </view>
-
-    </picker>
-
-  </view>
-  <text>~</text>
-  <view class="section">
-
-    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChangeend">
-
-      <view class="picker">
-
-        {{cend}}
-
-      </view>
-
-    </picker>
-
-  </view>
+<view wx:if="{{current==0}}">
+  <text>事件关键字：</text>
+  <input bindinput='inputTag' placeholder='最多输入3个字（必填）' maxlength="3" style='border:1rpx solid #000;' class="shurukuang"></input>
+  <text>详细信息：</text>
+  <input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;' class="shurukuang"></input>
 </view>
-<view class="timeselect">
-<text class="texts">日期 : </text> 
-<view class="section">
 
-  <picker mode="date" value="{{date}}" start="2020-01-01" end="2022-12-31" bindchange="bindDateChange">
+<view wx:if="{{current==1}}">
+  <view class="timeselect">
+    <text class="texts"> 时间 : </text>
+    <view class="section">
 
-    <view class="picker2">
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
 
-      {{dates}}
+        <view class="picker">
+
+          {{cstart}}
+
+        </view>
+
+      </picker>
 
     </view>
+    <text>~</text>
+    <view class="section">
 
-  </picker>
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChangeend">
+
+        <view class="picker">
+
+          {{cend}}
+
+        </view>
+
+      </picker>
+
+    </view>
+  </view>
+  <view class="timeselect">
+    <text class="texts">日期 : </text>
+    <view class="section">
+
+      <picker mode="date" value="{{date}}" start="2020-01-01" end="2022-12-31" bindchange="bindDateChange">
+
+        <view class="picker2">
+
+          {{dates}}
+
+        </view>
+
+      </picker>
+
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{current==2}}">
+  <!-->提醒功能-->
+  <checkbox-group bindchange="checkbox_change">
+    <label class="checkbox">
+      <checkbox value="{{notifi.name}}" checked="{{notifi.checked}}">设置提醒</checkbox>
+    </label>
+  </checkbox-group>
+  <view class="section">
+
+    <picker mode="selector" range="{{array}}" value="{{noti_index}}" disabled="{{disabled}}" bindchange="bindnotiChange">
+
+      <view class="picker">
+
+        提醒时间：{{array[noti_index]}}
+
+      </view>
+
+    </picker>
+
+  </view>
+  <view wx:if="{{current==2}}">
+  <button type="default" bindtap="onClick1">上一步</button>
+  </view>
+  <button bindtap="commitbutton" class="cbutton">确认提交</button>
 
 </view>
+<view class="button-sp-area" wx:if="{{current!=2}}">
+<button type="default" bindtap="onClick1">上一步</button>
+  <button type="default" bindtap="onClick">下一步</button>
 </view>
-<!--> 提醒功能-->
-<checkbox-group bindchange="checkbox_change">
-<label class="checkbox" >
-<checkbox value="{{notifi.name}}" checked="{{notifi.checked}}" >设置提醒</checkbox>
-</label>
-</checkbox-group>
-<view class="section"> 
-
-<picker mode="selector" range="{{array}}" value="{{noti_index}}" disabled="{{disabled}}" bindchange="bindnotiChange"> 
-
-<view class="picker"> 
-
-提醒时间：{{array[noti_index]}} 
-
-</view> 
-
-</picker> 
-
-</view>
-<button bindtap="commitbutton" class="cbutton">确认提交</button>

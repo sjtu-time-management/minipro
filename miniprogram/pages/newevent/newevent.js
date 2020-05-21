@@ -9,13 +9,6 @@ Page({
   data: {
     itag: '',
     idetail: '',
-    // iyear:'',
-    // imonth:'',
-    // idate:'',
-    // ish:'',
-    // ism:'',
-    // ieh:'',
-    // iem:''
     dates: '',
     cend:'',
     cstart:'',
@@ -26,8 +19,23 @@ Page({
     array: ['30分钟前', '10分钟前', '5分钟前', '时间生效时'],
 
     disabled: true,
-    noti_index: 0
+    noti_index: 0,
+    current: 0,
   },
+
+  onClick() {
+    const current = this.data.current + 1 > 2 ? 0 : this.data.current + 1
+    this.setData({
+      current,
+    })
+  },
+  onClick1() {
+    const current = this.data.current + 1 < 0 ? 0 : this.data.current - 1
+    this.setData({
+      current,
+    })
+  },
+
   checkbox_change: function (e) {
 
     this.setData({ noti_flag: !this.data.noti_flag })

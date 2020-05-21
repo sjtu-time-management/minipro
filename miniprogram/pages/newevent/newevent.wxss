@@ -32,3 +32,15 @@
   margin-top: 15rpx;
   margin-bottom: 15rpx;
 }
+.button-sp-area{
+  display: flex;
+}
+.bzt{
+  margin-top:40rpx;
+}
+.bkimg{
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 500rpx;
+}

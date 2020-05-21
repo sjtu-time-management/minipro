@@ -1,6 +1,6 @@
 <wux-fab-button position="topRight" theme="calm" direction="vertical" reverse="true" sAngle="-90" eAngle="-20" buttons="{{ buttons }}" bind:click="onClick" />
 
-<image class="bkimg" mode="aspectFill" style="height:1070rpx" src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ps2.webp"></image>
+<image class="bkimg" mode="aspectFill" style="height:1070rpx" src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ps3.gif"></image>
 
 <!-- change1 -->
 

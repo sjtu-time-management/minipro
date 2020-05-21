@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "新事件"
+  "navigationBarTitleText": "新事件",
+  "usingComponents": {
+    "wux-steps": "../../dist/steps/index",
+    "wux-step": "../../dist/step/index"
+  }
 }
