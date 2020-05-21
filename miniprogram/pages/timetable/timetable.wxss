@@ -69,7 +69,8 @@
 .style-default{
   background-color: rgb(247, 229, 130);
   padding: 30rpx 0;
-  text-align: center;
+  font-size: 30rpx;
+  /* text-align: center; */
 }
 .style-roll{
   background-color: rgb(130, 177, 247);
