@@ -196,6 +196,7 @@ Page({
         console.log(141);
       }
     })
+    // as
     records.splice(index, 1);
     this.setData({
       records: records
