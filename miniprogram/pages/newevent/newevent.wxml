@@ -6,11 +6,11 @@
   <wux-step title="设置提醒"></wux-step>
 </wux-steps>
 </view>
-<view wx:if="{{current==0}}">
+<view wx:if="{{current==0}}" class="infoview0">
   <text>事件关键字：</text>
   <input bindinput='inputTag' placeholder='最多输入3个字（必填）' maxlength="3" style='border:1rpx solid #000;' class="shurukuang"></input>
   <text>详细信息：</text>
-  <input bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;' class="shurukuang"></input>
+  <textarea bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;' class="shurukuang"/>
 </view>
 
 <view wx:if="{{current==1}}">
@@ -44,48 +44,37 @@
 
     </view>
   </view>
-  <view class="timeselect">
-    <text class="texts">日期 : </text>
-    <view class="section">
+  
+<wux-calendar id="wux-calendar"  />
+  <wux-cell title="日期：" extra="{{ dates }}" bind:click="openCalendar1"></wux-cell>
 
-      <picker mode="date" value="{{date}}" start="2020-01-01" end="2022-12-31" bindchange="bindDateChange">
-
-        <view class="picker2">
-
-          {{dates}}
-
-        </view>
-
-      </picker>
-
-    </view>
-  </view>
 </view>
 
 <view wx:if="{{current==2}}">
   <!-->提醒功能-->
-  <checkbox-group bindchange="checkbox_change">
-    <label class="checkbox">
-      <checkbox value="{{notifi.name}}" checked="{{notifi.checked}}">设置提醒</checkbox>
-    </label>
-  </checkbox-group>
+<view class="infoview">
+<view class="noti">
+<text class="texts">设置提醒</text>
+      <switch value="{{notifi.name}}" bindchange="checkbox_change" checked="{{notifi.checked}}" class="sw"/>
+</view>
+
   <view class="section">
 
     <picker mode="selector" range="{{array}}" value="{{noti_index}}" disabled="{{disabled}}" bindchange="bindnotiChange">
 
-      <view class="picker">
-
-        提醒时间：{{array[noti_index]}}
+      <view class="noti">
+        <text class="texts">提醒时间</text>
+        <text>{{array[noti_index]}}</text>
 
       </view>
 
     </picker>
-
+</view>
   </view>
   <view wx:if="{{current==2}}">
   <button type="default" bindtap="onClick1">上一步</button>
   </view>
-  <button bindtap="commitbutton" class="cbutton">确认提交</button>
+  <button bindtap="commitbutton" type="warn" class="cbutton">确认提交</button>
 
 </view>
 <view class="button-sp-area" wx:if="{{current!=2}}">

@@ -99,43 +99,43 @@ Page({
     if (index == 0) {
       var h = this.data.records.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200 
       })
     }
     if (index == 1) {
       var h = this.data.records1.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200 
       })
     }
     if (index == 2) {
       var h = this.data.records2.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200
       })
     }
     if (index == 3) {
       var h = this.data.records3.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200 
       })
     }
     if (index == 4) {
       var h = this.data.records4.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200 
       })
     }
     if (index == 5) {
       var h = this.data.records5.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200 
       })
     }
     if (index == 6) {
       var h = this.data.records6.length;
       this.setData({
-        swiperheight: h * 200 + 100
+        swiperheight: h * 200 
       })
     }
 
@@ -556,7 +556,7 @@ Page({
               () => {
                 var h = this.data.records.length;
                 this.setData({
-                  swiperheight: h * 200 + 100
+                  swiperheight: h * 200 
                 })
               }
             )

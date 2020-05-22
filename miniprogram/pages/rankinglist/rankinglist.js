@@ -8,8 +8,10 @@ const score = db.collection('score')
 
 Page({
   data: {
-    scoredata: []
+    scoredata: [],
+    lheight:0
   },
+
   onShow: function() {
     var that = this;
     const db = wx.cloud.database({
@@ -30,7 +32,8 @@ Page({
           }
         }
         that.setData({
-          scoredata: newrec
+          scoredata: newrec,
+          lheight:Number(160*newrec.length)
         })
       }
     })

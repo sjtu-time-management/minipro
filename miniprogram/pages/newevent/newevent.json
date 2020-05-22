@@ -2,6 +2,9 @@
   "navigationBarTitleText": "新事件",
   "usingComponents": {
     "wux-steps": "../../dist/steps/index",
-    "wux-step": "../../dist/step/index"
+    "wux-step": "../../dist/step/index",
+    "wux-cell-group": "../../dist/cell-group/index",
+    "wux-cell": "../../dist/cell/index",
+    "wux-calendar": "../../dist/calendar/index"
   }
 }

@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "我的时间表",
   "usingComponents": {
-    "wux-fab-button": "../../dist/fab-button/index"
+    "wux-fab-button": "../../dist/fab-button/index",
+    "wux-sticky": "../../dist/sticky/index",
+    "wux-sticky-item": "../../dist/sticky-item/index"
   }
 }

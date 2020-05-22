@@ -5,11 +5,13 @@ const db = wx.cloud.database({
   env: 'engineering-dvsy5'
 })
 const test2 = db.collection('test2')
+
+import { $wuxCalendar } from '../../dist/index'
 Page({
   data: {
     itag: '',
     idetail: '',
-    dates: '',
+    dates: [],
     cend:'',
     cstart:'',
     n:0,
@@ -23,14 +25,44 @@ Page({
     current: 0,
   },
 
+  openCalendar1() {
+    $wuxCalendar().open({
+      value: this.data.dates,
+      onChange: (values, displayValues) => {
+        console.log('onChange', values, displayValues)
+        this.setData({
+          dates: displayValues,
+        })
+      },
+    })
+  },
+
   onClick() {
+
+    if (!this.data.itag && this.data.current == 0) {
+      wx.showToast({
+        title: '请完整填写',
+        icon: 'none'
+      });
+      return;
+    }
+
+    if (this.data.cend < this.data.cstart && this.data.current==1) {
+      wx.showToast({
+        title: '结束时间不可早于开始时间哦~',
+        icon: 'none'
+      });
+      return;
+    }
+
     const current = this.data.current + 1 > 2 ? 0 : this.data.current + 1
     this.setData({
       current,
     })
   },
   onClick1() {
-    const current = this.data.current + 1 < 0 ? 0 : this.data.current - 1
+
+    const current = this.data.current - 1 < 0 ? 0 : this.data.current - 1
     this.setData({
       current,
     })
@@ -72,18 +104,6 @@ Page({
 
   },
 
-  //  点击日期组件确定事件  
-
-  bindDateChange: function(e) {
-
-    console.log(e.detail.value)
-
-    this.setData({
-
-      dates: e.detail.value
-
-    })
-  },
   bindTimeChangeend: function (e) {
 
     console.log(e.detail.value)
@@ -119,59 +139,14 @@ Page({
     var n = e + a + i + a + s;
     var inittime=h+b+m;
     this.setData({
-      dates:n,
+      dates:[n],
       cstart:inittime,
       cend:inittime
     })
   },
-
-  // inputYear: function (e) {
-  // this.setData({ iyear: e.detail.value.trim() });
-  // },
-
-  // inputMonth: function (e) {
-  // this.setData({ imonth: e.detail.value.trim() });
-  // },
-
-  // inputDate: function (e) {
-  // this.setData({ idate: e.detail.value.trim() });
-  // },
-
-  // inputStartHour: function (e) {
-  // this.setData({ ish: e.detail.value.trim() });
-  // },
-
-  // inputStartMin: function (e) {
-  // this.setData({ ism: e.detail.value.trim() });
-  // },
-
-  // inputEndHour: function (e) {
-  // this.setData({ ieh: e.detail.value.trim() });
-  // },
-
-  // inputEndMin: function (e) {
-  // this.setData({ iem: e.detail.value.trim() });
-  // },
   
   commitbutton: function() {
-    
-    if (!this.data.itag) {
-      wx.showToast({
-        title: '请完整填写',
-        icon: 'none'
-      });
-      return;
-    }
-
-    if (this.data.cend<this.data.cstart) {
-      wx.showToast({
-        title: '结束时间不可早于开始时间哦~',
-        icon: 'none'
-      });
-      return;
-    }
-
-
+ 
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
@@ -184,15 +159,6 @@ Page({
         console.log(res)
       },
     })
-
-
-    //wx.navigateBack({ });
-    // var now = getCurrentPages(); 
-    // var before = now[now.length - 2];
-    // before.changeData();
-    //  wx.navigateBack({
-    // success: () => {    // 执行前一页面的onLoad方法  
-    // before.onLoad();     }})
 
     wx.showToast({
       title: "Loading",
