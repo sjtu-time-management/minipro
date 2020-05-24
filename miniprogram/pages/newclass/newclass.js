@@ -247,6 +247,7 @@ Page({
                 iyear: that.data.dates,
                 cstart:that.data.cstart,
                 cend:that.data.cend,
+                cdow:that.data.cdow,
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },
@@ -346,6 +347,7 @@ Page({
         iyear: this.data.dates,
         cstart:this.data.cstart,
         cend:this.data.cend,
+        cdow:this.data.cdow,
         itime: this.data.times,
         noti_flag: false
       },
