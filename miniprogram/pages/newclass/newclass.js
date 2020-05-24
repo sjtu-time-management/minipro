@@ -195,24 +195,126 @@ Page({
 
   },
   combutton:function(){
-    if (this.data.cend < this.data.cstart) {
-      wx.showToast({
-        title: '结束时间不可早于开始时间哦~',
-        icon: 'none'
-      });
-      return;
-    }
+    if (this.data.noti_flag) {
+      var that = this;
+      wx.login({
+        success(res) {
+          wx.cloud.init()
+          wx.cloud.callFunction({
+            name: 'getapp',
+          }).then(res => {
+            that.setData({ openid: res.result.openid })
+            db.collection('test3').add({
+              data: {
+                itag: that.data.itag,
+                idetail: that.data.idetail,
+                iyear: that.data.dates,
+                cstart:this.data.cstart,
+                cend:this.data.cend,
+                itime: that.data.times,
+                noti_flag: that.data.noti_flag
+              },
+              success: function (res) {
+                that.setData({ _id: res._id })
+                console.log(res)
+                wx.cloud.callFunction({
+                  name: 'http',
+                  data: {
+                    url: 'http://9ff9d76e.ngrok.io/test/database/miniapi.php',
+                    _data: {
+                      _openid: that.data.openid,
+                      _id: that.data._id,
+                      itag: that.data.itag,
+                      iyear: that.data.dates,
+                      itime: that.data.times,
+                      noti_index: that.data.noti_index
+                    },
+                  }
+                })
+                  .then(res => {
+                    if (res.result === '200') {
+                      wx.showToast({
+                        title: '提醒设置完成！', icon: 'none'
+                      })
+                      wx.switchTab({
+                        url: '/pages/timetable/timetable',
+                        success: function (e) {
+                          var page = getCurrentPages().pop();
+                          if (page == undefined || page == null) return;
+                          page.onShow();
+                        }
+                      });
+                      console.log('成功！！！')
+                    }
+                    else {
+                      wx.showToast({
+                        title: '提醒设置失败！', icon: 'none'
+                      })
+                      db.collection('test3').doc(that.data._id).update({
+                        data: {
+                          noti_flag: false
+                        }
+                      })
+                      wx.switchTab({ url: '/pages/timetable/timetable' ,
+                       success: function (e) {
+                          var page = getCurrentPages().pop();
+                          if (page == undefined || page == null) return;
+                          page.onShow();
+                        }
+                      });
+                    }
+                    console.log(res)
+                  })
+                  .catch(res => {
+                    wx.showToast({
+                      title: '提醒设置失败！', icon: 'none'
+                    })
+                    db.collection('test3').doc(that.data._id).update({
+                      data: {
+                        noti_flag: false
+                      }
+                    })
+                    wx.switchTab({
+                      url: '/pages/timetable/timetable',
+                      success: function (e) {
+                        var page = getCurrentPages().pop();
+                        if (page == undefined || page == null) return;
+                        page.onShow();
+                      }
+                    });
+                    console.log(res)
+                  })
+              },
+            })
+          })
+          .catch(res => 
+          {
+            wx.showToast({
+              title: '获取openid失败！'
+            })
+            console.log(res)
+          })
+      }
+    })
+  }
+  else {
     db.collection('test3').add({
       data: {
         itag: this.data.itag,
-        cstart: this.data.cstart,
-        cend: this.data.cend,
-        cdow: this.data.cdow
+        idetail: this.data.idetail,
+        iyear: this.data.dates,
+        cstart:this.data.cstart,
+        cend:this.data.cend,
+        itime: this.data.times,
+        noti_flag: false
       },
       success: function (res) {
+        that.setData({ _id: res._id })
         console.log(res)
       },
     })
+    wx.navigateBack({})
+  } 
     wx.showToast({
       title: "Loading",
       icon: 'loading',
