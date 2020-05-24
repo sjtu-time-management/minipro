@@ -166,7 +166,13 @@ Page({
   },
   
   commitbutton: function() {
- 
+    if (!this.data.itag) {
+      wx.showToast({
+        title: '请完整填写',
+        icon: 'none'
+      });
+      return;
+    }
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
