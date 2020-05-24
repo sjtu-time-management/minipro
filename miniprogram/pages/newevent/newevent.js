@@ -231,6 +231,38 @@ Page({
                       });
                       console.log('成功！！！')
                     }
+                    else {
+                      wx.showToast({
+                        title: '提醒设置失败！', icon: 'none'
+                      })
+                      db.collection('test2').doc(that.data._id).update({
+                        data: {
+                          noti_flag: false
+                        }
+                      })
+                      wx.switchTab({ url: '/pages/timetable/timetable' ,
+                       success: function (e) {
+
+                          var page = getCurrentPages().pop();
+
+                          if (page == undefined || page == null) return;
+
+                          page.onShow();
+
+                        }
+                      });
+                    }
+                    console.log(res)
+                  })
+                  .catch(res => {
+                    wx.showToast({
+                      title: '提醒设置失败！', icon: 'none'
+                    })
+                    db.collection('test2').doc(that.data._id).update({
+                      data: {
+                        noti_flag: false
+                      }
+                    })
             })
           })
         }
