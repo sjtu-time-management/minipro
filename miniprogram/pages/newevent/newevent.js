@@ -92,6 +92,7 @@ Page({
     }
     var min = t1 % 60;
     var hour = (t1 - min) / 60;
+    var notime = hour + ':' + min + ':' + '00'; 
   },
 
   inputTag: function(e) {
