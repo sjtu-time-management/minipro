@@ -175,6 +175,17 @@ Page({
     let j = 0;
     var index = e.currentTarget.dataset.index;
     var records = this.data.records;
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
     db.collection('test2').doc(this.data.records[index]._id).remove({
       success: res => {
         wx.showToast({
