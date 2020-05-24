@@ -221,6 +221,16 @@ Page({
                       wx.showToast({
                         title: '提醒设置完成！', icon: 'none'
                       })
+                      wx.switchTab({
+                        url: '/pages/timetable/timetable',
+                        success: function (e) {
+                          var page = getCurrentPages().pop();
+                          if (page == undefined || page == null) return;
+                          page.onShow();
+                        }
+                      });
+                      console.log('成功！！！')
+                    }
             })
           })
         }
