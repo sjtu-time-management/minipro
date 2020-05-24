@@ -93,6 +93,10 @@ Page({
     var min = t1 % 60;
     var hour = (t1 - min) / 60;
     var notime = hour + ':' + min + ':' + '00'; 
+    if (min < 10)  min = '0' + String(min);
+    else min = String(min);
+    if (hour < 10) hour = '0' + String(hour);
+    else hour = String(hour);
   },
 
   inputTag: function(e) {
