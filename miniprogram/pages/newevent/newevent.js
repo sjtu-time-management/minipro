@@ -85,6 +85,11 @@ Page({
       case '1': t1 = t0 - 10;break;
       case '2': t1 = t0 - 5; break;
     }
+    if(t1 < 0){wx.showToast({
+      title: '设置提醒时间错误',
+    });
+    return;
+    }
   },
 
   inputTag: function(e) {
