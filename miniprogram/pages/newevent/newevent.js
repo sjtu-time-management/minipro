@@ -80,6 +80,11 @@ Page({
     var t0 = this.data.cstart;
     t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
     var t1 = t0;
+    switch(notidx){
+      case '0': t1 = t0 - 30;break;
+      case '1': t1 = t0 - 10;break;
+      case '2': t1 = t0 - 5; break;
+    }
   },
 
   inputTag: function(e) {
