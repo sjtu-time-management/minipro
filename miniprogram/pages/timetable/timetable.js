@@ -1,3 +1,4 @@
+var result
 wx.cloud.init({
   env: 'engineering-dvsy5'
 })
@@ -169,7 +170,6 @@ Page({
       url: '/pages/newclass/newclass',
     })
   },
-  //需要和gsh交互!!!!!!!!!!!!!!!!!
   deleteEvent: function(e) {
     console.log(e);
     let j = 0;
