@@ -191,50 +191,47 @@ Page({
           console.log(result)
           if (result == 251) {
             console.log(res)
-            db.collection('test2').doc(records[index]._id).remove({
+            db.collection('test2').doc(this.data.records[index]._id).remove({
               success: res => {
-                records.splice(index, 1);
-                this.setData({
-                  records: records
-                });
                 wx.showToast({
                   title: '删除成功',
                 })
-                console.log(res)
-                records.splice(index, 1);
-                this.setData({
-                  records: records
-                });
-                wx.setStorageSync('records', this.data.records);
               },
-    db.collection('test2').doc(this.data.records[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        console.log(121);
-      }
-    })
-    db.collection('test3').doc(this.data.records[index]._id).remove({
-      success: res => {
-        console.log(131);
-        wx.showToast({
-          title: '删除成功',
-        })
-      },
-      fail: err => {
-        console.log(141);
-      }
-    })
-    // as
-    records.splice(index, 1);
-    this.setData({
-      records: records
-    });
-    wx.setStorageSync('records', this.data.records);
-  },
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+              
+            
+
   // 优化，写成类/删除失败
   deleteEvent1: function(e) {
     console.log(e);
