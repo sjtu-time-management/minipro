@@ -76,7 +76,10 @@ Page({
   },
   bindnotiChange: function (e) {
     //console.log('picker发送选择改变，携带值为', e.detail.value)
-    
+    var notidx= e.detail.value;
+    var t0 = this.data.cstart;
+    t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
+    var t1 = t0;
   },
 
   inputTag: function(e) {
