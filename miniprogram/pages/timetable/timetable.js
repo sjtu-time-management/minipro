@@ -172,7 +172,6 @@ Page({
   },
   deleteEvent: function(e) {
     console.log(e);
-    let j = 0;
     var index = e.currentTarget.dataset.index;
     var records = this.data.records;
     if (records[index].noti_flag) {
@@ -266,145 +265,523 @@ Page({
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records1;
-    db.collection('test2').doc(this.data.records1[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(this.data.records[index]._id).remove({
+              success: res => {
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
-      }
-    })
-    records.splice(index, 1);
-    this.setData({
-      records1: records
-    });
-    wx.setStorageSync('records', this.data.records1);
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
   },
   deleteEvent2: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records2;
-    db.collection('test2').doc(this.data.records2[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(this.data.records[index]._id).remove({
+              success: res => {
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
-      }
-    })
-    records.splice(index, 1);
-    this.setData({
-      records2: records
-    });
-    wx.setStorageSync('records', this.data.records2);
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
   },
   deleteEvent3: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records3;
-    db.collection('test2').doc(this.data.records3[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(this.data.records[index]._id).remove({
+              success: res => {
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
-      }
-    })
-    records.splice(index, 1);
-    this.setData({
-      records3: records
-    });
-    wx.setStorageSync('records', this.data.records3);
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
   },
   deleteEvent4: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records4;
-    db.collection('test2').doc(this.data.records4[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(this.data.records[index]._id).remove({
+              success: res => {
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
-      }
-    })
-    records.splice(index, 1);
-    this.setData({
-      records4: records
-    });
-    wx.setStorageSync('records', this.data.records4);
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
   },
   deleteEvent5: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records5;
-    db.collection('test2').doc(this.data.records5[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(this.data.records[index]._id).remove({
+              success: res => {
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
-      }
-    })
-    records.splice(index, 1);
-    this.setData({
-      records5: records
-    });
-    wx.setStorageSync('records', this.data.records5);
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
   },
   deleteEvent6: function(e) {
     console.log(e);
     var index = e.currentTarget.dataset.index;
     var records = this.data.records6;
-    db.collection('test2').doc(this.data.records6[index]._id).remove({
-      success: res => {
-        wx.showToast({
-          title: '删除成功',
+    if (records[index].noti_flag) {
+      wx.cloud.callFunction({
+        name: 'http',
+        data: {
+          url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+          _data: {
+            _id: records[index]._id,
+            _itag: records[index]._itag
+          }
+        }
+      })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(this.data.records[index]._id).remove({
+              success: res => {
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(121);
+              }
+            })
+            db.collection('test3').doc(this.data.records[index]._id).remove({
+              success: res => {
+                console.log(131);
+                wx.showToast({
+                  title: '删除成功',
+                })
+              },
+              fail: err => {
+                console.log(141);
+              }
+            })
+            // as
+            records.splice(index, 1);
+            this.setData({
+              records: records
+            });
+            wx.setStorageSync('records', this.data.records);
+          }
         })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
-      }
-    })
-    records.splice(index, 1);
-    this.setData({
-      records6: records
-    });
-    wx.setStorageSync('records', this.data.records6);
+        .catch(res => {
+          wx.showToast({
+            title: '删除失败！', icon: 'none'
+          })
+          // console.log(res)
+          console.error('后端数据删除失败：', res)
+        }
+        )
+    }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
   },
   onShow: function() {
     var myDate = new Date();
