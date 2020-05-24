@@ -97,6 +97,9 @@ Page({
     else min = String(min);
     if (hour < 10) hour = '0' + String(hour);
     else hour = String(hour);
+    this.setData({
+      times: notime
+    })
   },
 
   inputTag: function(e) {
