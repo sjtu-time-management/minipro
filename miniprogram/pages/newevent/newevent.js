@@ -242,13 +242,9 @@ Page({
                       })
                       wx.switchTab({ url: '/pages/timetable/timetable' ,
                        success: function (e) {
-
                           var page = getCurrentPages().pop();
-
                           if (page == undefined || page == null) return;
-
                           page.onShow();
-
                         }
                       });
                     }
@@ -263,11 +259,29 @@ Page({
                         noti_flag: false
                       }
                     })
+                    wx.switchTab({
+                      url: '/pages/timetable/timetable',
+                      success: function (e) {
+                        var page = getCurrentPages().pop();
+                        if (page == undefined || page == null) return;
+                        page.onShow();
+                      }
+                    });
+                    console.log(res)
+                  })
+              },
             })
           })
-        }
-      })
-    }
+          .catch(res => 
+          {
+            wx.showToast({
+              title: '获取openid失败！'
+            })
+            console.log(res)
+          })
+      }
+    })
+  }
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
