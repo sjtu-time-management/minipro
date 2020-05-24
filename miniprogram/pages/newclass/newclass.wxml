@@ -45,4 +45,23 @@
   <text>节</text>
 </view>
 </view>
+<view class="infoview">
+<view class="noti">
+<text class="texts">设置提醒</text>
+      <switch value="{{notifi.name}}" bindchange="checkbox_change" checked="{{notifi.checked}}" class="sw"/>
+</view>
+
+  <view class="section">
+
+    <picker mode="selector" range="{{array}}" value="{{noti_index}}" disabled="{{disabled}}" bindchange="bindnotiChange">
+
+      <view class="noti">
+        <text class="texts">提醒时间</text>
+        <text>{{array[noti_index]}}</text>
+
+      </view>
+
+    </picker>
+</view>
+</view>
   <button bindtap="combutton">确认提交</button>

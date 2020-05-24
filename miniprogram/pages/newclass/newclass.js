@@ -22,12 +22,16 @@ Page({
     dayofweek: ['周一', '周二', '周三', '周四', '周五','周六','周日'],
     classno1: ['1', '2', '3', '4', '5','6','7','8','9','10','11'],
     classno2: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-
-  itag:'',
-  cstart:'',
-  cend:'',
-  cdow:''
-
+    notifi: { name: 'notifi' },
+    array: ['30分钟前', '10分钟前', '5分钟前', '时间生效时'],
+    times:'',
+    disabled: true,
+    noti_index: 0,
+    noti_flag: false,
+    itag:'',
+    cstart:'',
+    cend:'',
+    cdow:''
   },
   bindCasPickerChange: function (e) {
     console.log('选的是', this.data.classes[e.detail.value])
@@ -191,8 +195,37 @@ Page({
           })
       }
     }
+  },
+  checkbox_change: function (e) {
 
-
+    this.setData({ noti_flag: !this.data.noti_flag })
+    this.setData({ disabled: !this.data.disabled })
+  },
+  bindnotiChange: function (e) {
+    var notidx= e.detail.value;
+    var t0 = this.data.cstart;
+    t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
+    var t1 = t0;
+    switch(notidx){
+      case '0': t1 = t0 - 30;break;
+      case '1': t1 = t0 - 10;break;
+      case '2': t1 = t0 - 5; break;
+    }
+    if(t1 < 0){wx.showToast({
+      title: '设置提醒时间错误',
+    });
+    return;
+    }
+    var min = t1 % 60;
+    var hour = (t1 - min) / 60;
+    var notime = hour + ':' + min + ':' + '00'; 
+    if (min < 10)  min = '0' + String(min);
+    else min = String(min);
+    if (hour < 10) hour = '0' + String(hour);
+    else hour = String(hour);
+    this.setData({
+      times: notime
+    })
   },
   combutton:function(){
     if (this.data.noti_flag) {
