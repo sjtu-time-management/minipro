@@ -90,6 +90,8 @@ Page({
     });
     return;
     }
+    var min = t1 % 60;
+    var hour = (t1 - min) / 60;
   },
 
   inputTag: function(e) {
