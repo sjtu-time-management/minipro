@@ -198,6 +198,29 @@ Page({
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },
+              success: function (res) {
+                that.setData({ _id: res._id })
+                console.log(res)
+                wx.cloud.callFunction({
+                  name: 'http',
+                  data: {
+                    url: 'http://9ff9d76e.ngrok.io/test/database/miniapi.php',
+                    _data: {
+                      _openid: that.data.openid,
+                      _id: that.data._id,
+                      itag: that.data.itag,
+                      iyear: that.data.dates,
+                      itime: that.data.times,
+                      code: res.code,
+                      noti_index: that.data.noti_index
+                    },
+                  }
+                })
+                  .then(res => {
+                    if (res.result === '200') {
+                      wx.showToast({
+                        title: '提醒设置完成！', icon: 'none'
+                      })
             })
           })
         }
