@@ -173,6 +173,13 @@ Page({
       });
       return;
     }
+    if (this.data.cend < this.data.cstart) {
+      wx.showToast({
+        title: '结束时间不可早于开始时间哦~',
+        icon: 'none'
+      });
+      return;
+    }
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
