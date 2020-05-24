@@ -186,6 +186,27 @@ Page({
           }
         }
       })
+        .then(res => {
+          result = res.result
+          console.log(result)
+          if (result == 251) {
+            console.log(res)
+            db.collection('test2').doc(records[index]._id).remove({
+              success: res => {
+                records.splice(index, 1);
+                this.setData({
+                  records: records
+                });
+                wx.showToast({
+                  title: '删除成功',
+                })
+                console.log(res)
+                records.splice(index, 1);
+                this.setData({
+                  records: records
+                });
+                wx.setStorageSync('records', this.data.records);
+              },
     db.collection('test2').doc(this.data.records[index]._id).remove({
       success: res => {
         wx.showToast({
