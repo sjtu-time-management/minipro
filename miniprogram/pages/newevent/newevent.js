@@ -188,6 +188,17 @@ Page({
           wx.cloud.init()
           wx.cloud.callFunction({
             name: 'getapp',
+          }).then(res => {
+            that.setData({ openid: res.result.openid })
+            db.collection('test2').add({
+              data: {
+                itag: that.data.itag,
+                idetail: that.data.idetail,
+                iyear: that.data.dates,
+                itime: that.data.times,
+                noti_flag: that.data.noti_flag
+              },
+            })
           })
         }
       })
