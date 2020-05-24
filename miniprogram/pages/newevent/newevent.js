@@ -19,7 +19,7 @@ Page({
     noti_flag: false,
     code: '',
     array: ['30分钟前', '10分钟前', '5分钟前', '时间生效时'],
-
+    times:'',
     disabled: true,
     noti_index: 0,
     current: 0,
@@ -76,9 +76,7 @@ Page({
   },
   bindnotiChange: function (e) {
     //console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      noti_index: e.detail.value
-    })
+    
   },
 
   inputTag: function(e) {
