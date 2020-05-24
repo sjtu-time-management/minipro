@@ -1,5 +1,6 @@
 wx.cloud.init({
-  env: 'engineering-dvsy5'
+  env:'engineering-dvsy5',
+  traceUser:true,
 })
 const db = wx.cloud.database({
   env: 'engineering-dvsy5'
@@ -195,8 +196,8 @@ Page({
                 itag: that.data.itag,
                 idetail: that.data.idetail,
                 iyear: that.data.dates,
-                cstart:this.data.cstart,
-                cend:this.data.cend,
+                cstar:that.data.cstart,
+                cend:that.data.cend,
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },

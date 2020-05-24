@@ -232,9 +232,12 @@ Page({
       var that = this;
       wx.login({
         success(res) {
-          wx.cloud.init()
+          wx.cloud.init({
+            env:'engineering-dvsy5',
+            traceUser:true,
+          })
           wx.cloud.callFunction({
-            name: 'getapp',
+            name: 'getOpenid',
           }).then(res => {
             that.setData({ openid: res.result.openid })
             db.collection('test3').add({
@@ -242,14 +245,18 @@ Page({
                 itag: that.data.itag,
                 idetail: that.data.idetail,
                 iyear: that.data.dates,
-                cstart:this.data.cstart,
-                cend:this.data.cend,
+                cstart:that.data.cstart,
+                cend:that.data.cend,
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },
               success: function (res) {
                 that.setData({ _id: res._id })
                 console.log(res)
+                wx.cloud.init({
+                  env:'engineering-dvsy5',
+                  traceUser:true,
+                })
                 wx.cloud.callFunction({
                   name: 'http',
                   data: {
@@ -323,7 +330,8 @@ Page({
           .catch(res => 
           {
             wx.showToast({
-              title: '获取openid失败！'
+              title: '获取openid失败！',
+              icon:"none"
             })
             console.log(res)
           })

@@ -1,6 +1,9 @@
 const cloud = require('wx-server-sdk')
 const rp = require('request-promise')
-cloud.init()
+cloud.init({
+  env:'engineering-dvsy5',
+  traceUser:true,
+})
 
 exports.main = async (event, context) => {
   const options = {

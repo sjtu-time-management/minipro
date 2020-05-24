@@ -1,6 +1,7 @@
 var result
 wx.cloud.init({
-  env: 'engineering-dvsy5'
+  env:'engineering-dvsy5',
+  traceUser:true,
 })
 const db = wx.cloud.database({
   env: 'engineering-dvsy5'
