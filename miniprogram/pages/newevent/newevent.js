@@ -185,6 +185,10 @@ Page({
       var that = this;
       wx.login({
         success(res) {
+          wx.cloud.init()
+          wx.cloud.callFunction({
+            name: 'getapp',
+          })
         }
       })
     }
