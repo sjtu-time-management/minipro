@@ -195,6 +195,8 @@ Page({
                 itag: that.data.itag,
                 idetail: that.data.idetail,
                 iyear: that.data.dates,
+                cstart:this.data.cstart,
+                cend:this.data.cend,
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },
@@ -211,7 +213,6 @@ Page({
                       itag: that.data.itag,
                       iyear: that.data.dates,
                       itime: that.data.times,
-                      code: res.code,
                       noti_index: that.data.noti_index
                     },
                   }
@@ -282,19 +283,24 @@ Page({
       }
     })
   }
+  else {
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
         idetail: this.data.idetail,
         iyear: this.data.dates,
-        cstart: this.data.cstart,
-        cend:this.data.cend
+        cstart:this.data.cstart,
+        cend:this.data.cend,
+        itime: this.data.times,
+        noti_flag: false
       },
-      success: function(res) {
+      success: function (res) {
+        that.setData({ _id: res._id })
         console.log(res)
       },
     })
-
+    wx.navigateBack({})
+  } 
     wx.showToast({
       title: "Loading",
       icon: 'loading',
@@ -303,6 +309,5 @@ Page({
     setTimeout(function() {
       wx.navigateBack({})
     }, 500)
-
   }
 })
