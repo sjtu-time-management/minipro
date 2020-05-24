@@ -180,6 +180,14 @@ Page({
       });
       return;
     }
+    //判断是否提醒
+    if (this.data.noti_flag) {
+      var that = this;
+      wx.login({
+        success(res) {
+        }
+      })
+    }
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
