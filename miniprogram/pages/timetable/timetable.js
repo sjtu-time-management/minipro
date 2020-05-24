@@ -229,6 +229,35 @@ Page({
         }
         )
     }
+    else {
+      db.collection('test2').doc(this.data.records[index]._id).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(121);
+        }
+      })
+      db.collection('test3').doc(this.data.records[index]._id).remove({
+        success: res => {
+          console.log(131);
+          wx.showToast({
+            title: '删除成功',
+          })
+        },
+        fail: err => {
+          console.log(141);
+        }
+      })
+      records.splice(index, 1);
+      this.setData({
+        records: records
+      });
+      wx.setStorageSync('records', this.data.records);
+    }
+  },
               
             
 
