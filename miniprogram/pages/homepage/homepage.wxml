@@ -1,5 +1,6 @@
 
-  <image class='hpimage' src='/images/home50.jpg' mode="aspectFill"></image>
-
-<image class='hpimage2' src='/images/home51.jpg' bindtap="navg" mode="aspectFill"></image>
+  <image class='hpimage' src='cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/246620.jpg' mode="aspectFill"></image>
+<view class="button1">
+<image class='hpimage2' src='cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/kaishi.jpg' bindtap="navg" ></image>
+</view>
   <!--<navigator url="/pages/timetable/timetable" open-type="switchTab" hover-class="starterclicked" class="starterdefault">开始使用</navigator>
