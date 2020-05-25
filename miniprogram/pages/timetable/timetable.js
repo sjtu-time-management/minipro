@@ -50,7 +50,6 @@ function del(flag,records,index,that){
               console.log(141);
             }
           })
-          // as
           records.splice(index, 1);
           that.setData({
             records: records
@@ -62,7 +61,6 @@ function del(flag,records,index,that){
         wx.showToast({
           title: '删除失败！', icon: 'none'
         })
-        // console.log(res)
         console.error('后端数据删除失败：', res)
       }
       )
