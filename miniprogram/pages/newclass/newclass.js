@@ -202,7 +202,8 @@ Page({
     this.setData({ disabled: !this.data.disabled })
   },
   bindnotiChange: function (e) {
-    var notidx= e.detail.value;
+    this.setData({ noti_index: e.detail.value })
+    /*var notidx= e.detail.value;
     var t0 = this.data.cstart;
     t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
     var t1 = t0;
@@ -225,7 +226,7 @@ Page({
     else hour = String(hour);
     this.setData({
       times: notime
-    })
+    })*/
   },
   combutton:function(){
     if (this.data.noti_flag) {
@@ -261,13 +262,13 @@ Page({
                 wx.cloud.callFunction({
                   name: 'http',
                   data: {
-                    url: 'http://9ff9d76e.ngrok.io/test/database/miniapi.php',
+                    url: 'http://9ff9d76e.ngrok.io/test/database/claapi.php',
                     _data: {
                       _openid: that.data.openid,
                       _id: that.data._id,
                       itag: that.data.itag,
-                      iyear: that.data.dates,
-                      itime: that.data.times,
+                      cdow: that.data.cdow,
+                      cstart: that.data.cstart,
                       noti_index: that.data.noti_index
                     },
                   }

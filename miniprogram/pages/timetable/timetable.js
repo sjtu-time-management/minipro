@@ -19,7 +19,8 @@ function del(flag, records, index, that) {
         url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
         _data: {
           _id: records[index]._id,
-          _itag: records[index]._itag
+          _itag: records[index]._itag,
+          cdow: records[index].cdow
         }
       }
     })

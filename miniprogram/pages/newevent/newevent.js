@@ -76,7 +76,8 @@ Page({
     //console.log(this.data.noti_flag)
   },
   bindnotiChange: function (e) {
-    var notidx = e.detail.value;
+    this.setData({ noti_index: e.detail.value })
+    /*var notidx = e.detail.value;
     var t0 = this.data.cstart;
     t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
     var t1 = t0;
@@ -100,7 +101,7 @@ Page({
     else hour = String(hour);
     this.setData({
       times: notime
-    })
+    })*/
   },
 
   inputTag: function(e) {
@@ -194,8 +195,8 @@ Page({
                 itag: that.data.itag,
                 idetail: that.data.idetail,
                 iyear: that.data.dates,
-                cstart: this.data.cstart,
-                cend: this.data.cend,
+                cstart: that.data.cstart,
+                cend: that.data.cend,
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },
@@ -211,7 +212,7 @@ Page({
                       _id: that.data._id,
                       itag: that.data.itag,
                       iyear: that.data.dates,
-                      itime: that.data.times,
+                      itime: that.data.cstart,
                       noti_index: that.data.noti_index
                     },
                   }
