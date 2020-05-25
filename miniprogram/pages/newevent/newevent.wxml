@@ -1,3 +1,4 @@
+<wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
 <image src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ps5(添加事件界面 (1).gif" class="bkimg" mode="aspectFill"></image>
 <view class="bzt">
 <wux-steps current="{{ current }}" >
@@ -81,3 +82,5 @@
 <button type="default" bindtap="onClick1">上一步</button>
   <button type="default" bindtap="onClick">下一步</button>
 </view>
+
+</wux-spin>

@@ -1,6 +1,5 @@
 wx.cloud.init({
-  env:'engineering-dvsy5',
-  traceUser:true,
+  env: 'engineering-dvsy5'
 })
 const db = wx.cloud.database({
   env: 'engineering-dvsy5'
@@ -20,10 +19,11 @@ Page({
     noti_flag: false,
     code: '',
     array: ['30分钟前', '10分钟前', '5分钟前', '时间生效时'],
-    times:'',
+    times: '',
     disabled: true,
     noti_index: 0,
     current: 0,
+    spinstatus:true
   },
 
   openCalendar1() {
@@ -76,24 +76,25 @@ Page({
     //console.log(this.data.noti_flag)
   },
   bindnotiChange: function (e) {
-    var notidx= e.detail.value;
+    var notidx = e.detail.value;
     var t0 = this.data.cstart;
     t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
     var t1 = t0;
-    switch(notidx){
-      case '0': t1 = t0 - 30;break;
-      case '1': t1 = t0 - 10;break;
+    switch (notidx) {
+      case '0': t1 = t0 - 30; break;
+      case '1': t1 = t0 - 10; break;
       case '2': t1 = t0 - 5; break;
     }
-    if(t1 < 0){wx.showToast({
-      title: '设置提醒时间错误',
-    });
-    return;
+    if (t1 < 0) {
+      wx.showToast({
+        title: '设置提醒时间错误',
+      });
+      return;
     }
     var min = t1 % 60;
     var hour = (t1 - min) / 60;
     var notime = hour + ':' + min + ':' + '00'; 
-    if (min < 10)  min = '0' + String(min);
+    if (min < 10) min = '0' + String(min);
     else min = String(min);
     if (hour < 10) hour = '0' + String(hour);
     else hour = String(hour);
@@ -137,6 +138,17 @@ Page({
   },
 
   onLoad: function() {
+    var that = this;
+    this.setData({
+      spinstatus: true
+    })
+    setTimeout(function () {
+      that.setData({
+        spinstatus: false
+      })
+
+    }, 1000)
+
     var t = new Date();
     var a = "-";
     var b=":"
@@ -167,20 +179,6 @@ Page({
   },
   
   commitbutton: function() {
-    if (!this.data.itag) {
-      wx.showToast({
-        title: '请完整填写',
-        icon: 'none'
-      });
-      return;
-    }
-    if (this.data.cend < this.data.cstart) {
-      wx.showToast({
-        title: '结束时间不可早于开始时间哦~',
-        icon: 'none'
-      });
-      return;
-    }
     //判断是否提醒
     if (this.data.noti_flag) {
       var that = this;
@@ -196,8 +194,8 @@ Page({
                 itag: that.data.itag,
                 idetail: that.data.idetail,
                 iyear: that.data.dates,
-                cstar:that.data.cstart,
-                cend:that.data.cend,
+                cstart: this.data.cstart,
+                cend: this.data.cend,
                 itime: that.data.times,
                 noti_flag: that.data.noti_flag
               },
@@ -242,8 +240,9 @@ Page({
                           noti_flag: false
                         }
                       })
-                      wx.switchTab({ url: '/pages/timetable/timetable' ,
-                       success: function (e) {
+                      wx.switchTab({
+                        url: '/pages/timetable/timetable',
+                        success: function (e) {
                           var page = getCurrentPages().pop();
                           if (page == undefined || page == null) return;
                           page.onShow();
@@ -274,28 +273,27 @@ Page({
               },
             })
           })
-          .catch(res => 
-          {
-            wx.showToast({
-              title: '获取openid失败！'
+            .catch(res => {
+              wx.showToast({
+                title: '获取openid失败！'
+              })
+              console.log(res)
             })
-            console.log(res)
-          })
-      }
-    })
-  }
-  else {
+        }
+      })
+    }
+    else{
     db.collection('test2').add({
       data: {
         itag: this.data.itag,
         idetail: this.data.idetail,
         iyear: this.data.dates,
-        cstart:this.data.cstart,
+        cstart: this.data.cstart,
         cend:this.data.cend,
         itime: this.data.times,
         noti_flag: false
       },
-      success: function (res) {
+      success: function(res) {
         that.setData({ _id: res._id })
         console.log(res)
       },

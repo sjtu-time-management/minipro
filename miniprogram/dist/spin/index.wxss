@@ -32,12 +32,12 @@
   position: absolute;
   top: 50%;
   width: 100%;
-  padding-top: 12rpx;
+  padding-top: 90rpx;
   text-shadow: 0 2rpx 4rpx #fff
 }
 .wux-spin__dots {
-  width: 40rpx;
-  height: 40rpx;
+  width: 120rpx;
+  height: 120rpx;
   overflow: hidden;
   display: inline-block;
   transform: rotate(45deg);
@@ -47,11 +47,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -20rpx
+  margin: -60rpx
 }
 .wux-spin__dot {
-  width: 18rpx;
-  height: 18rpx;
+  width: 55rpx;
+  height: 55rpx;
   border-radius: 100%;
   background-color: #108ee9;
   transform: scale(.75);
