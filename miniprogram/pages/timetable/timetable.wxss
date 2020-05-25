@@ -1,8 +1,9 @@
+
 .timetable1{
   display: flex;
   padding: 30rpx;
   margin:20rpx 20rpx;
-  background-color: #FFFAF0;
+  background-color:rgba(255,250,248,0.38);
   border: solid 1px black;
   height: 120rpx;
 }
@@ -24,25 +25,6 @@
   width:520rpx;
 }
 
-.addbutton{
-  display:flex;
-  margin-left: -28rpx;
-  margin-right: -28rpx;
-  height: 100rpx;
-}
-.add{
-  background-color:transparent;
-  border: none;
-  height: 100rpx;
-  width: 250rpx;
-}
-.add::after{
-  background-color:transparent;
-  border: none;
-  height: 100rpx;
-  width: 250rpx;
-  z-index: -1;
-}
 .delete{
   color: red;
 }
@@ -58,16 +40,20 @@
 /* 一下左右滑动 */
 .nav{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:rgba(255, 255, 255,0.5);
+}
+.nav1{
+display: flex;
   justify-content: space-around;
-  padding: 20rpx;
-  background-color:transparent;
   font-size: 30rpx;
 }
 .nav-switch-style{
-  color: snow;
+  color: palevioletred;
+  font-weight: bold;
 }
 .style-default{
-  background-color: rgb(247, 229, 130);
   padding: 30rpx 0;
   font-size: 30rpx;
   /* text-align: center; */
@@ -77,10 +63,13 @@
   padding:10px 5px 15px 10px; 
   /* text-align: center;   */
 }
+
 .currentday{
   display: flex;
-  height: 100rpx;
- background-color: rgb(247, 229, 130);
+  flex-direction: column;
+  text-align: center;
+ background-color: rgba(255, 255, 255,0.75);
+ border-bottom:solid 1px rgba(0,0,0,0.4);
  justify-content: center;
 }
 
@@ -105,4 +94,12 @@
   height: 100%;
   position: fixed;
   background-size: 100% 100%;
+}
+.ghbutton{
+  position: fixed;
+  width: 160rpx;
+  height:50rpx;
+  bottom: 30rpx;
+  right: 30rpx;
+  z-index: 2;
 }

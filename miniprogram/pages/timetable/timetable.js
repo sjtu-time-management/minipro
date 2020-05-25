@@ -1,7 +1,6 @@
 var result
 wx.cloud.init({
-  env:'engineering-dvsy5',
-  traceUser:true,
+  env: 'engineering-dvsy5'
 })
 const db = wx.cloud.database({
   env: 'engineering-dvsy5'
@@ -12,7 +11,7 @@ const idmajor = db.collection('id-major')
 var app = getApp();
 var util = require('../../utils/util.js'); //获取时间
 
-function del(flag,records,index,that){
+function del(flag, records, index, that) {
   if (flag) {
     wx.cloud.callFunction({
       name: 'http',
@@ -97,7 +96,6 @@ function del(flag,records,index,that){
   }
 }
 
-
 const buttons = [{
     label: '添加事件',
     icon: '/icons/shi.jpg'
@@ -156,9 +154,42 @@ Page({
       'wea_img': 'qing'
     }, //实况天气
     weatherweek: [], //七日天气
+    pics: ["cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5241.jpg", "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/52410.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/52411.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/52412.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/52413.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/52414.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5242.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5243.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5244.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5245.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5246.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5247.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5248.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5249.jpg",
+      "cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/c727b73d-67be-41c0-a369-d7636b3dcd01.jpg"
+    ],
+    bkindex: 0,
+    spinstatus: true,
+    totalh:0,
     buttons
   },
-
+  changebk: function() {
+    var that = this;
+    this.setData({
+      spinstatus: true
+    })
+    setTimeout(function () {
+      that.setData({
+        spinstatus: false
+      })
+    }, 600)
+    var i = this.data.bkindex
+    i = (i + 1) % (this.data.pics.length)
+    this.setData({
+      bkindex: i
+    })
+  },
   onClick(e) {
     console.log('onClick', e.detail)
     if (e.detail.index === 0) {
@@ -187,13 +218,13 @@ Page({
     if (index == 0) {
       var h = this.data.records.length;
       this.setData({
-        swiperheight: h * 200 
+        swiperheight: h * 200
       })
     }
     if (index == 1) {
       var h = this.data.records1.length;
       this.setData({
-        swiperheight: h * 200 
+        swiperheight: h * 200
       })
     }
     if (index == 2) {
@@ -205,25 +236,25 @@ Page({
     if (index == 3) {
       var h = this.data.records3.length;
       this.setData({
-        swiperheight: h * 200 
+        swiperheight: h * 200
       })
     }
     if (index == 4) {
       var h = this.data.records4.length;
       this.setData({
-        swiperheight: h * 200 
+        swiperheight: h * 200
       })
     }
     if (index == 5) {
       var h = this.data.records5.length;
       this.setData({
-        swiperheight: h * 200 
+        swiperheight: h * 200
       })
     }
     if (index == 6) {
       var h = this.data.records6.length;
       this.setData({
-        swiperheight: h * 200 
+        swiperheight: h * 200
       })
     }
 
@@ -257,54 +288,84 @@ Page({
       url: '/pages/newclass/newclass',
     })
   },
-  deleteEvent: function(e) {
+
+  deleteEvent: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
   // 优化，写成类/删除失败
-  deleteEvent1: function(e) {
+  deleteEvent1: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records1;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
-  deleteEvent2: function(e) {
+  deleteEvent2: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records2;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
-  deleteEvent3: function(e) {
+  deleteEvent3: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records3;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
-  deleteEvent4: function(e) {
+  deleteEvent4: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records4;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
-  deleteEvent5: function(e) {
+  deleteEvent5: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records5;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
-  deleteEvent6: function(e) {
+  deleteEvent6: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records6;
     var flag = records[index].noti_flag;
-    del(flag,records,index,this);
+    del(flag, records, index, this);
+    this.onShow();
   },
+  /////////
+  ////////////
+  /////////
+  //////////
+  ////////////
+  //////////
+  ////////////
+  //////////
   onShow: function() {
+    var that = this;
+    this.setData({
+      spinstatus:true
+    })
+    setTimeout(function() {
+      that.setData({
+        spinstatus:false
+      })
+
+    }, 2000)
+this.setData({
+  totalh:wx.getSystemInfoSync().windowHeight
+})
+    
     var myDate = new Date();
 
     //this.onLoad()
-    var that = this;
+    
     //change424
     var time = util.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据
@@ -509,7 +570,7 @@ Page({
               () => {
                 var h = this.data.records.length;
                 this.setData({
-                  swiperheight: h * 200 
+                  swiperheight: h * 200
                 })
               }
             )
@@ -754,6 +815,7 @@ Page({
     })
 
   },
+
   onLoad: function(options) {
     this.getapi();
   },

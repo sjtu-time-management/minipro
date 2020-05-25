@@ -5,6 +5,7 @@
     "wux-step": "../../dist/step/index",
     "wux-cell-group": "../../dist/cell-group/index",
     "wux-cell": "../../dist/cell/index",
-    "wux-calendar": "../../dist/calendar/index"
+    "wux-calendar": "../../dist/calendar/index",
+    "wux-spin": "../../dist/spin/index"
   }
 }
