@@ -18,7 +18,6 @@
 .pic{
   width:80rpx;
   height:80rpx;
-  margin-top:10rpx;
 }
 .score{
   color: rgb(241, 208, 19);

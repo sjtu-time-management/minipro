@@ -18,6 +18,8 @@ Page({
     flag:false,
     id:'',
     list:[],
+    display:[],
+    lheight: 0,
   },
 
 
@@ -91,7 +93,7 @@ Page({
     });
   },
 
-  onLoad: function (options) {
+ onLoad: function (options) {
   var time = util.formatTime(new Date());
   // 再通过setData更改Page()里面的data，动态更新页面的数据
   this.setData({
@@ -124,5 +126,22 @@ Page({
           list: res.data
         });
       })
+    
+  },
+
+  onShow: function() {
+    var that = this;
+    record.get()
+    .then(res => {
+      console.log("record:",res.data);
+      var tmp = [{},{},{},{},{}];
+      for (var i = 0; i < 5; i++){
+        tmp[i]=res.data[res.data.length-i-1]
+      }
+      this.setData({
+        display: tmp,
+        lheight:Number(160*res.data.length)
+      });
+    })
   }
 })
