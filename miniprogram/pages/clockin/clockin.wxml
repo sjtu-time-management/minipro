@@ -1,9 +1,25 @@
-<view>
-<text>打卡时间：6:00 - 8:59，21:00 - 22:59</text>
-<input class="input"  wx:if="{{flag}}" bindinput="inputfun" name="other" placeholder="来说点什么吧~" type="text"/>
+<view class="container">
+  <text>打卡时间：6:00 - 8:59，21:00 - 22:59</text>
+  <input class="input"  wx:if="{{flag}}" bindinput="inputfun" name="other" placeholder="来说点什么吧~" type="text"/>
+  <text wx:if="{{!flag}}">现在不是打卡时间哦~你可以：</text>  
+  
   <view>
     <button class="cbuttonl" bindtap="paihang">查看排行</button>
-    <button bindtap="commitbutton" wx:if="{{flag}}" class="cbuttonr">发布打卡</button>
+    <button bindtap="commitbutton" wx:if="{{flag}}" class="cbuttonl">发布打卡</button>
   </view>
-   
+
+  <view class='titleview'>
+    <text class='title'>最新打卡留言</text>
+  </view>
+
+  <view>
+  <scroll-view scroll-y="true" style="height: 700rpx;">
+    <view style="height:{{lheight}}rpx">
+      <view class="display" wx:for="{{display}}">
+        <image class="pic" src="{{item.pic}}"></image>
+        <text>{{item.record}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  </view> 
 </view>
