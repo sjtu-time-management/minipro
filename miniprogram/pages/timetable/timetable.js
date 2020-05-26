@@ -56,11 +56,12 @@ function del(flag, records, index, that) {
             records: records
           });
           wx.setStorageSync('records', records);
+          that.onShow();
         }
       })
       .catch(res => {
-        wx.showToast({
-          title: '删除失败！', icon: 'none'
+        wx.showToast({                                                                                                                                       
+          title: '删除提醒失败！', icon: 'none'
         })
         console.error('后端数据删除失败：', res)
       }
@@ -93,6 +94,7 @@ function del(flag, records, index, that) {
       records: records
     });
     wx.setStorageSync('records', records);
+    that.onShow();
   }
 }
 
@@ -294,7 +296,6 @@ Page({
     var records = this.data.records;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   // 优化，写成类/删除失败
   deleteEvent1: function (e) {
@@ -302,42 +303,36 @@ Page({
     var records = this.data.records1;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   deleteEvent2: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records2;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   deleteEvent3: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records3;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   deleteEvent4: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records4;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   deleteEvent5: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records5;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   deleteEvent6: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records6;
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
-    this.onShow();
   },
   /////////
   ////////////
