@@ -1,3 +1,5 @@
+<image class="bkimg" mode="aspectFill" src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ljt.jpg"></image>
+<wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
 <view class="gifview">
   <image class="gif1" src="/images/giftest.gif"></image>
   <image class="gif1" src="/images/giftest.gif"></image>
@@ -7,7 +9,7 @@
   <image class="gif1" src="/images/giftest.gif"></image>
   <image class="gif1" src="/images/giftest.gif"></image>
 </view>
-<scroll-view scroll-y="true" style="height: 820rpx;">
+<scroll-view scroll-y="true" style="height: {{totalh*0.92}}px" bindrefresherrefresh="refresh" refresher-enabled="true">
   <view style="height:{{lheight}}rpx">
     <view class="rankinglist1" wx:for="{{scoredata}}">
       <text class="index">第{{index+1}}名</text>
@@ -29,3 +31,4 @@
     </view>
   </view>
 </scroll-view>
+</wux-spin>

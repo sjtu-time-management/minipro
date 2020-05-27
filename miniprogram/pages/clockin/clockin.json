@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "早睡早起打卡"
+  "navigationBarTitleText": "早睡早起打卡",
+  "wux-spin": "../../dist/spin/index"
 }

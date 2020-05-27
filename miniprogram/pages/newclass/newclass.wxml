@@ -1,6 +1,8 @@
 <!--miniprogram/pages/newclass/newclass.wxml-->
 <!-- <text>miniprogram/pages/newclass/newclass.wxml</text> -->
 <!--页面根标签-->
+
+<wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
 <view class="content">
 	<!--pics文件夹下的background.jpg文件-->
 	<image class='background' src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5277.jpg" mode="aspectFill"></image>
@@ -72,3 +74,4 @@
 </view>
 </view>
   <button bindtap="combutton">确认提交</button>
+  </wux-spin>
