@@ -1,5 +1,12 @@
 <!--miniprogram/pages/newclass/newclass.wxml-->
 <!-- <text>miniprogram/pages/newclass/newclass.wxml</text> -->
+<!--页面根标签-->
+<view class="content">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background' src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/5277.jpg" mode="aspectFill"></image>
+	<!--页面其它部分-->
+</view>
+
 <view class="row-wrap">
      <view class="label">↓ 选择课程 ↓</view>
      <picker class="picker1" bindchange="bindCasPickerChange" value="{{casIndex}}" range="{{classes}}">
@@ -47,7 +54,7 @@
 </view>
 <view class="infoview">
 <view class="noti">
-<text class="texts">设置提醒</text>
+<text class="xzsj">设置提醒</text>
       <switch value="{{notifi.name}}" bindchange="checkbox_change" checked="{{notifi.checked}}" class="sw"/>
 </view>
 
