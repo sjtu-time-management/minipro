@@ -135,7 +135,7 @@ Page({
   console.log("date:",this.data.date, time)
   //判断当前是否是打卡时间
   var hour=Number(time[11]+time[12])
-  if(hour==1||hour==7||hour==8||hour==21||hour==22)
+  if(hour==6||hour==7||hour==8||hour==21||hour==22)
   {
     this.setData({
       flag: true
