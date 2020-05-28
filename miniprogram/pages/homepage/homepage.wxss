@@ -5,6 +5,7 @@
   height: 100%;
   position: fixed;
   background-size: 100% 100%;
+  z-index: -1;
  }
 
  .button1{
@@ -15,6 +16,7 @@
   background-color: rgba(255,255,255,0.5);
   background-size: 100% 100%;
   display: flex;
+  z-index: 1;
  }
  .hpimage2{
    position: absolute;
@@ -25,19 +27,8 @@
  }
  
 
-.starterdefault{
-  color: rgb(86, 183, 240);
-  font-size: 60rpx;
-  font-weight: bold;
-  text-align: center;
 
-}
 
-.starterclicked{
-  color:rgb(0, 56, 88);
-  font-size: 64rpx;
-  font-weight: bold;
-}
 
 
 

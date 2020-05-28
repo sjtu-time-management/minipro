@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "新课程"
+  "navigationBarTitleText": "新课程",
+  "wux-spin": "../../dist/spin/index"
 }

@@ -30,6 +30,7 @@ Page({
     noti_flag: false,
     itag:'',
     cstart:'',
+    spinstatus: true,
     cend:'',
     cdow:''
   },
@@ -185,6 +186,16 @@ Page({
     const db = wx.cloud.database({
       env: 'engineering-dvsy5'
     })
+    var that = this;
+    this.setData({
+      spinstatus: true
+    })
+    setTimeout(function () {
+      that.setData({
+        spinstatus: false
+      })
+
+    }, 500)
 
     var i;
     if (!this.data.classes[0]) {

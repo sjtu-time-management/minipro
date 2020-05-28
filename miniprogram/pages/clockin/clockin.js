@@ -19,6 +19,7 @@ Page({
     id:'',
     list:[],
     display:[],
+    spinstatus: true,
     lheight: 0,
   },
 
@@ -94,6 +95,16 @@ Page({
   },
 
  onLoad: function (options) {
+   var that = this;
+   this.setData({
+     spinstatus: true
+   })
+   setTimeout(function () {
+     that.setData({
+       spinstatus: false
+     })
+
+   }, 500)
   var time = util.formatTime(new Date());
   // 再通过setData更改Page()里面的data，动态更新页面的数据
   this.setData({

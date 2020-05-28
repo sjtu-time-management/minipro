@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText":"时间管理sjtu",
-  "navigationBarBackgroundColor": "#00AAAA"
+  "navigationBarBackgroundColor": "#00AAAA",
+  "wux-spin": "../../dist/spin/index"
 }

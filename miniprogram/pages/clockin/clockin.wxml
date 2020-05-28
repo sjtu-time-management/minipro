@@ -1,3 +1,4 @@
+<wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
 <view class="container">
   <text>打卡时间：6:00 - 8:59，21:00 - 22:59</text>
   <input class="input"  wx:if="{{flag}}" bindinput="inputfun" name="other" placeholder="来说点什么吧~" type="text"/>
@@ -23,3 +24,4 @@
   </scroll-view>
   </view> 
 </view>
+</wux-spin>

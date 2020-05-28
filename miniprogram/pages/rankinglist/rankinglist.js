@@ -9,10 +9,28 @@ const score = db.collection('score')
 Page({
   data: {
     scoredata: [],
-    lheight:0
+    lheight:0,
+    totalh: 0,
+    spinstatus: true,
+    pulled:false
   },
-
+  refresh:function(){
+    this.onShow()
+  },
   onShow: function() {
+    var that = this;
+    this.setData({
+      spinstatus: true
+    })
+    setTimeout(function () {
+      that.setData({
+        spinstatus: false
+      })
+
+    }, 500)
+    this.setData({
+      totalh: wx.getSystemInfoSync().windowHeight
+    })
     var that = this;
     const db = wx.cloud.database({
       env: 'engineering-dvsy5'
