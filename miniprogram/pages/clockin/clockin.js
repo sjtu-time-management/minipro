@@ -19,8 +19,12 @@ Page({
     id:'',
     list:[],
     display:[],
+    day:[],
+    day_my:[],
+    display_my:[],
     spinstatus: true,
     lheight: 0,
+    lheight_my: 0,
   },
 
 
@@ -44,99 +48,114 @@ Page({
       })
       return;
     }
-
-    //在数据库里增加打卡记录
-    record.add({
-      data: {
-      time:this.data.date,
-      record:this.data.value,
-      nickName: app.globalData.nickName,
-      pic:app.globalData.pic
-      },
-      success: function (res) {
-        console.log(res)
-      },
-    })
-    console.log(this.data.list.length)
-
-    //修改打卡分数
-    if(this.data.list.length==0)
-    {
-      score.add({
+    
+    var tmp = String(this.data.date.getFullYear())+' - '+String(this.data.date.getMonth()+1)+' - '+String(this.data.date.getDate());
+    record.where({
+      '_openid': app.globalData.openid,
+      'timeStr': tmp,
+    }).get().then(res => {
+      console.log(res);
+      if (res.data.length==2) {
+        wx.showToast({
+          title: '今天已经打卡两次了哦~',
+          icon: 'none'
+        })
+        return;
+      }
+      
+      //在数据库里增加打卡记录
+      record.add({
         data: {
-          score: 1,
-          username: app.globalData.nickName,
-          pic: app.globalData.pic
+        time:this.data.date,
+        timeStr:String(this.data.date.getFullYear())+' - '+String(this.data.date.getMonth()+1)+' - '+String(this.data.date.getDate()),
+        record:this.data.value,
+        nickName: app.globalData.nickName,
+        pic:app.globalData.pic
         },
         success: function (res) {
           console.log(res)
         },
       })
-    }
-    if (this.data.list.length == 1)
-    {
-      score.doc(
-        this.data.list[0]._id
-      ).update({
-        data: {
-          score:this.data.list[0].score+1
-        },
-        success: function (res) {
-          console.log(res.data)
-        }
-      })
-    }
-    wx.reLaunch({
-      url: "/pages/homepage/homepage"
-    });
-    this.setData({
-      value: ''
-    });
+      console.log(this.data.list.length)
+
+      //修改打卡分数
+      if(this.data.list.length==0)
+      {
+        score.add({
+          data: {
+            score: 1,
+            username: app.globalData.nickName,
+            pic: app.globalData.pic
+          },
+          success: function (res) {
+            console.log(res)
+          },
+        })
+      }
+      if (this.data.list.length == 1)
+      {
+        score.doc(
+          this.data.list[0]._id
+        ).update({
+          data: {
+            score:this.data.list[0].score+1
+          },
+          success: function (res) {
+            console.log(res.data)
+          }
+        })
+      }
+      wx.reLaunch({
+        url: "/pages/homepage/homepage"
+      });
+      this.setData({
+        value: ''
+      });
+    })
   },
 
- onLoad: function (options) {
-   var that = this;
-   this.setData({
+  onLoad: function (options) {
+    var that = this;
+    this.setData({
      spinstatus: true
-   })
-   setTimeout(function () {
-     that.setData({
+    })
+    setTimeout(function () {
+       that.setData({
        spinstatus: false
      })
-
    }, 500)
   var time = util.formatTime(new Date());
   // 再通过setData更改Page()里面的data，动态更新页面的数据
   this.setData({
     time: time
   });
+  this.setData({
+    date: new Date(time)
+  });
+  console.log("date:",this.data.date, time)
+  //判断当前是否是打卡时间
+  var hour=Number(time[11]+time[12])
+  if(hour==1||hour==7||hour==8||hour==21||hour==22)
+  {
     this.setData({
-      date: new Date(time)
+      flag: true
     });
-    console.log(this.data.date) 
-    //判断当前是否是打卡时间
-    var hour=Number(time[11]+time[12])
-    if(hour==6||hour==7||hour==8||hour==21||hour==22||hour==23)
-    {
+  }
+  //查询数据库里是否有相关记录
+  const app = getApp()
+  this.setData({
+    id: app.globalData.openid
+  });
+  console.log(this.data.id)
+  score.where({
+    '_openid': app.globalData.openid
+  }).get()
+    .then(res => {
+      console.log(res);
       this.setData({
-        flag: true
+        list: res.data
       });
-    }
-    //查询数据库里是否有相关记录
-    const app = getApp()
-    this.setData({
-      id: app.globalData.openid
-    });
-    console.log(this.data.id)
-    score.where({
-     '_openid': app.globalData.openid
-    }).get()
-      .then(res => {
-        console.log(res);
-        this.setData({
-          list: res.data
-        });
-      })
+    })
     
   },
 
@@ -152,6 +171,14 @@ Page({
       this.setData({
         display: tmp,
         lheight:Number(160*res.data.length)
+      });
+    })
+    record.where({'_openid': app.globalData.openid}).get()
+    .then(res => {
+      console.log("record_my:",res.data);
+      this.setData({
+        display_my: res.data.reverse(),
+        lheight_my: Number(160*res.data.length)
       });
     })
   }
