@@ -357,7 +357,14 @@ Page({
         console.log(res)
       },
     })
-    wx.navigateBack({})
+    wx.switchTab({
+      url: '/pages/timetable/timetable',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onShow();
+      }
+    });
   } 
     wx.showToast({
       title: "Loading",
@@ -365,7 +372,14 @@ Page({
       duration: 500,
     })
     setTimeout(function () {
-      wx.navigateBack({})
+      wx.switchTab({
+        url: '/pages/timetable/timetable',
+        success: function (e) {
+          var page = getCurrentPages().pop();
+          if (page == undefined || page == null) return;
+          page.onShow();
+        }
+      });
     }, 500)
   },
 
