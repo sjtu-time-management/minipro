@@ -18,6 +18,7 @@ Page({
     sem_index: (app.globalData.major + 7) % 8,
     pic: '/images/user-unlogin.png',
     nickName: '',
+    login: app.globalData.login,
   },
 
   // getOpenid() {
@@ -54,13 +55,10 @@ Page({
     this.setData({
       index: (tmp-1-tmp1)/8,
       sem_index: tmp1,
-    });
-    info.doc(app.globalData.idcache).get().then(res => {
-      this.setData({
-        nickName: res.data.nickName,
-        pic: res.data.avatarUrl,
+      login: app.globalData.login,
+      nickName: app.globalData.nickName,
+      pic: app.globalData.pic,
       })
-    })
     console.log("tmp=", tmp);
     console.log("index=", this.data.index);
     console.log("sem_index=", this.data.sem_index);

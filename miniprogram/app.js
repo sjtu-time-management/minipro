@@ -22,7 +22,8 @@ App({
       idcache:0,
       openid:0,
       nickName:'',
-      pic:'/images/user-unlogin.png'
+      pic:'/images/user-unlogin.png',
+      login: false,
     }
   }
 })

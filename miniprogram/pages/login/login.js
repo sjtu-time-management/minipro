@@ -15,23 +15,9 @@ Page({
    */
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    openid:'',
-    list:{}
   },
   
-  getOpenid(){
-    wx.cloud.callFunction({
-      name: 'getOpenid',
-      complete: res => {
-        console.log('openid--', res.result)
-        var openid = res.result.openid
-        this.setData({
-          openid: openid
-        })
-        app.globalData.openid = openid
-      }
-    })
-  },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -43,14 +29,9 @@ Page({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
           console.log("用户授权了");
-          that.getOpenid();
-          info.where({"_openid":that.openid}).get().then(res=>{console.log(res);
-          that.setData({list: res.data});
-          console.log(that.data.list.length);
-          })
           setTimeout(function () {
-            if (that.data.list.length > 0) {
-              info.where({ "_openid": that.openid}).get().then(res => {
+            if (app.globalData.login > 0) {
+              info.get().then(res => {
                 app.globalData.idcache = res.data[0]._id;
                 app.globalData.major = res.data[0].major;
                 app.globalData.pic = res.data[0].avatarUrl;
@@ -76,17 +57,19 @@ Page({
     });
   },
 
+  refuse: function(res){
+    wx.navigateBack();
+  },
+
   bindGetUserInfo: function (res) {
     if (res.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
       // 获取到用户的信息了，打印到控制台上看下
-      that.getOpenid();
       console.log("用户的信息如下：");
       console.log(res.detail.userInfo);
       setTimeout(function () {
-        console.log(that.data.openid);
-        if(that.data.list.length==0){
+        if(app.globalData.login==0){
           info.add({
             data: {
               major: 4,
@@ -98,14 +81,15 @@ Page({
               app.globalData.idcache = res._id;
               app.globalData.pic = res.avatarUrl;
               app.globalData.nickName = res.nickName;
-              console.log(app.globalData.idcache);
+              app.globalData.login = 1;
+              console.log(app.globalData.login);
             },
           })
         }
       }, 1000);
       //授权成功后,跳转页面
-      wx.navigateTo({
-        url: '/pages/settings/settings',
+      wx.switchTab({
+        url: '/pages/homepage/homepage',
         success: (result) => {
           console.log("跳转");
         },

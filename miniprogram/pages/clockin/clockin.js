@@ -25,6 +25,7 @@ Page({
     spinstatus: true,
     lheight: 0,
     lheight_my: 0,
+    login_flag: Boolean(app.globalData.login),
   },
 
 
@@ -117,25 +118,24 @@ Page({
   onLoad: function (options) {
     var that = this;
     this.setData({
-     spinstatus: true
-    })
+     spinstatus: true,
+    })    
     setTimeout(function () {
        that.setData({
-       spinstatus: false
+       spinstatus: false,
+       login_flag: app.globalData.login,
      })
    }, 500)
   var time = util.formatTime(new Date());
   // 再通过setData更改Page()里面的data，动态更新页面的数据
   this.setData({
-    time: time
-  });
-  this.setData({
-    date: new Date(time)
+    time: time,
+    date: new Date(time),
   });
   console.log("date:",this.data.date, time)
   //判断当前是否是打卡时间
   var hour=Number(time[11]+time[12])
-  if(hour==1||hour==7||hour==8||hour==21||hour==22)
+  if(hour==6||hour==7||hour==8||hour==21||hour==22)
   {
     this.setData({
       flag: true
@@ -161,6 +161,7 @@ Page({
 
   onShow: function() {
     var that = this;
+    this.setData({login_flag: Boolean(app.globalData.login)});
     record.get()
     .then(res => {
       console.log("record:",res.data);

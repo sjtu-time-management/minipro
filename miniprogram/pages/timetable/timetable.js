@@ -132,6 +132,7 @@ Page({
     disabled: false,
     dayofweek: '',
     navState: 0, //导航状态
+    login_flag: Boolean(app.globalData.login),
     t0: '',
     t1: '',
     t2: '',
@@ -349,13 +350,14 @@ Page({
     })
     setTimeout(function() {
       that.setData({
-        spinstatus:false
+        spinstatus:false,
+        login_flag: app.globalData.login,
       })
 
     }, 2000)
-this.setData({
-  totalh:wx.getSystemInfoSync().windowHeight
-})
+    this.setData({
+      totalh:wx.getSystemInfoSync().windowHeight
+    })
     
     var myDate = new Date();
 
@@ -812,8 +814,11 @@ this.setData({
   },
 
   onLoad: function(options) {
+    this.setData({login_flag: Boolean(app.globalData.login)});
+    console.log("log------------------:",this.data.login_flag);
     this.getapi();
   },
+
   getapi: function() {
     var _this = this;
     // 获取IP地址
