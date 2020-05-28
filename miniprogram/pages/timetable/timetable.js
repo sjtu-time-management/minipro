@@ -396,7 +396,7 @@ this.setData({
     })
     if (that.data.t1 < that.data.t0) {
       that.setData({
-        m1: "6"
+        m1: String(parseInt(time[6])+1)
       })
     } else {
       that.setData({
@@ -406,7 +406,7 @@ this.setData({
     console.log(that.data.m1)
     if (that.data.t2 < that.data.t0) {
       that.setData({
-        m2: "6"
+        m2: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -416,7 +416,7 @@ this.setData({
 
     if (that.data.t3 < that.data.t0) {
       that.setData({
-        m3: "6"
+        m3: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -426,7 +426,7 @@ this.setData({
 
     if (that.data.t4 < that.data.t0) {
       that.setData({
-        m4: "6"
+        m4: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -435,7 +435,7 @@ this.setData({
     }
     if (that.data.t5 < that.data.t0) {
       that.setData({
-        m5: "6"
+        m5: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -444,7 +444,7 @@ this.setData({
     }
     if (that.data.t6 < that.data.t0) {
       that.setData({
-        m6: "6"
+        m6: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
