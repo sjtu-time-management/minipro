@@ -842,7 +842,7 @@ Page({
   weathertoday: function(ip) {
     var _this = this;
     wx.request({
-      url: 'https://www.tianqiapi.com/api/?version=v6&appid=42921851&appsecret=ubJcta4Y',
+      url: 'https://tianqiapi.com/api/?version=v6&appid=42921851&appsecret=ubJcta4Y',
       data: {
         'ip': ip
       },
@@ -862,7 +862,7 @@ Page({
   weatherweekday: function(ip) {
     var _this = this;
     wx.request({
-      url: 'https://www.tianqiapi.com/api/?version=v1&appid=42921851&appsecret=ubJcta4Y',
+      url: 'https://tianqiapi.com/api/?version=v1&appid=42921851&appsecret=ubJcta4Y',
       data: {
         'ip': ip
       },
