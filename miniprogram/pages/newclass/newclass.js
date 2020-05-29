@@ -362,6 +362,12 @@ Page({
       icon: 'loading',
       duration: 500,
     })
+
+    setTimeout(function () {
+      wx.switchTab({
+        url: '/pages/timetable/timetable',
+      });
+    }, 500)
   },
 
   /**

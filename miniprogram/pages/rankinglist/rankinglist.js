@@ -11,6 +11,7 @@ Page({
     scoredata: [],
     lheight:0,
     totalh: 0,
+    my: 0,
     spinstatus: true,
     pulled:false
   },
@@ -49,7 +50,15 @@ Page({
             }
           }
         }
+        var tmp = 0;
+          for (var i = 0; i < newrec.length; ++i){
+            if (newrec[i]._openid==getApp().globalData.openid){
+              tmp = i;
+              break;
+            }
+          }
         that.setData({
+          my: tmp,
           scoredata: newrec,
           lheight:Number(160*newrec.length)
         })

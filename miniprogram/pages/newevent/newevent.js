@@ -282,13 +282,10 @@ Page({
       icon: 'loading',
       duration: 500,
     })
-    wx.switchTab({
-      url: '/pages/timetable/timetable',
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onShow();
-      }
-    });
+    setTimeout(function () {
+      wx.switchTab({
+        url: '/pages/timetable/timetable',
+      });
+    }, 500)
   }
 })
