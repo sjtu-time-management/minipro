@@ -247,6 +247,13 @@ Page({
       });
       return;
     }
+    if (this.data.casIndex3 > this.data.casIndex4) {
+      wx.showToast({
+        title: '请正确填写节次顺序',
+        icon: 'none'
+      });
+      return;
+    }
     if (this.data.noti_flag) {
       var that = this;
       wx.login({
