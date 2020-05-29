@@ -240,6 +240,13 @@ Page({
     })*/
   },
   combutton:function(){
+    if (this.data.itag  == "") {
+      wx.showToast({
+        title: '请完整填写',
+        icon: 'none'
+      });
+      return;
+    }
     if (this.data.noti_flag) {
       var that = this;
       wx.login({
