@@ -298,7 +298,7 @@ Page({
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
   },
-  // 优化，写成类/删除失败
+  // 优化，写成类
   deleteEvent1: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records1;
@@ -364,6 +364,7 @@ Page({
     //this.onLoad()
     
     //change424
+    // 以下确定Load日期
     var time = util.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据
     that.setData({
