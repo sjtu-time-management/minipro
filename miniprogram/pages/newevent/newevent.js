@@ -74,35 +74,9 @@ Page({
 
     this.setData({ noti_flag: !this.data.noti_flag })
     this.setData({ disabled: !this.data.disabled })
-    //console.log(this.data.noti_flag)
   },
   bindnotiChange: function (e) {
     this.setData({ noti_index: e.detail.value })
-    /*var notidx = e.detail.value;
-    var t0 = this.data.cstart;
-    t0 = parseInt(t0.slice(0, 2)) * 60 + parseInt(t0.slice(3));
-    var t1 = t0;
-    switch (notidx) {
-      case '0': t1 = t0 - 30; break;
-      case '1': t1 = t0 - 10; break;
-      case '2': t1 = t0 - 5; break;
-    }
-    if (t1 < 0) {
-      wx.showToast({
-        title: '设置提醒时间错误',
-      });
-      return;
-    }
-    var min = t1 % 60;
-    var hour = (t1 - min) / 60;
-    var notime = hour + ':' + min + ':' + '00'; 
-    if (min < 10) min = '0' + String(min);
-    else min = String(min);
-    if (hour < 10) hour = '0' + String(hour);
-    else hour = String(hour);
-    this.setData({
-      times: notime
-    })*/
   },
 
   inputTag: function(e) {
