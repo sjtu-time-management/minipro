@@ -17,7 +17,7 @@ function del(flag, records, index, that) {
     wx.cloud.callFunction({
       name: 'http',
       data: {
-        url: 'http://9ff9d76e.ngrok.io/test/database/delapi.php',
+        url: 'http://c99357a536e4.ngrok.io/test/database/delapi.php',
         _data: {
           _id: records[index]._id,
           _itag: records[index]._itag,

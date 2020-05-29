@@ -273,7 +273,7 @@ Page({
                 wx.cloud.callFunction({
                   name: 'http',
                   data: {
-                    url: 'http://9ff9d76e.ngrok.io/test/database/claapi.php',
+                    url: 'http://c99357a536e4.ngrok.io/test/database/claapi.php',
                     _data: {
                       _openid: that.data.openid,
                       _id: that.data._id,
