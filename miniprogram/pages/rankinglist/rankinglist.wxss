@@ -2,7 +2,7 @@
   display: flex;
   padding: 30rpx;
   margin:20rpx 20rpx;
-  background-color: #FFFAF0;
+  background-color: rgba(255,250,248,0.9);
   border: solid 1px black;
 }
 
