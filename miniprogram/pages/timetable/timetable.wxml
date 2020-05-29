@@ -4,7 +4,10 @@
 
 
 
-  <view bindtap="changebk" class="ghbutton">更换背景</view>
+  <view bindtap="changebk" class="ghbutton" wx:if="{{login_flag}}">更换背景</view>
+  <view class="ghbutton1" wx:else>
+  <navigator url="/pages/settings/settings">点击这里登陆以使用完整功能</navigator>
+  </view>
   <image class="bkimg" mode="aspectFill" src="{{pics[bkindex]}}"></image>
 
 

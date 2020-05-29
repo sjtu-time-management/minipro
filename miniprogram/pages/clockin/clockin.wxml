@@ -1,8 +1,9 @@
 <wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
-<view class="container">
-  <text>打卡时间：6:00 - 8:59，21:00 - 22:59</text>
+
+<view class="container" wx:if="{{login_flag}}">
+  <text>每日打卡上限两次~\n打卡时间：6:00 - 8:59，21:00 - 22:59</text>
   <input class="input"  wx:if="{{flag}}" bindinput="inputfun" name="other" placeholder="来说点什么吧~" type="text"/>
-  <text wx:if="{{!flag}}">现在不是打卡时间哦~你可以：</text>  
+  <text wx:if="{{!flag}}">    现在不是打卡时间哦~你可以：</text>  
   
   <view>
     <button class="cbuttonl" bindtap="paihang">查看排行</button>
@@ -17,11 +18,46 @@
   <scroll-view scroll-y="true" style="height: 700rpx;">
     <view style="height:{{lheight}}rpx">
       <view class="display" wx:for="{{display}}">
-        <image class="pic" src="{{item.pic}}"></image>
-        <text>{{item.record}}</text>
+          <view class="image">
+            <image class="pic" src="{{item.pic}}"></image>
+          </view>
+          <view class="record">
+            <text>{{item.record}}</text>
+          </view>
+          <view class="rightside">
+            <text>{{item.timeStr}}</text>
+          </view>
       </view>
     </view>
   </scroll-view>
   </view> 
+
+  <view class='titleview'>
+    <text class='title'>我的打卡留言</text>
+  </view>
+
+  <view>
+    <scroll-view scroll-y="true" style="height: 700rpx;">
+      <view style="height:{{lheight_my}}rpx">
+        <view class="display" wx:for="{{display_my}}">
+          <view class="image">
+            <image class="pic" src="{{item.pic}}"></image>
+          </view>
+          <view class="record">
+            <text>{{item.record}}</text>
+          </view>
+          <view class="rightside">
+            <text>{{item.timeStr}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view> 
 </view>
+
+<view wx:else>
+  <image class="bkimg" mode="aspectFill" src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/52410.jpg"></image>
+  <navigator url="/pages/login/login" class="else">请点击这里登陆以使用打卡功能</navigator>
+</view>
+
 </wux-spin>

@@ -103,3 +103,11 @@ display: flex;
   right: 30rpx;
   z-index: 2;
 }
+.ghbutton1{
+  position: fixed;
+  width: 490rpx;
+  height:50rpx;
+  bottom: 30rpx;
+  right: 10rpx;
+  z-index: 2;
+}

@@ -36,7 +36,6 @@
 .container{
   background-color: #eee;
   justify-content: space-around;
-  height: 100vh;
   align-items: center;
 }
 
@@ -56,12 +55,51 @@
 }
 
 .title{
-  font-size: 60rpx;
+  font-size: 50rpx;
   font-weight: bold;
-  margin-top: 60rpx;
+  margin-top: 40rpx;
+  margin-bottom: 10rpx;
 }
 
 .titleview{
   display: flex;
   justify-content: center;
+}
+
+.rightside{
+  font-size: 27rpx;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+}
+
+.record{
+  width: 360rpx;
+  font-size: 33rpx;
+}
+
+.image{
+  width: 100rpx;
+}
+
+.avatar{
+  width:300rpx;
+  height: 300rpx;
+}
+
+.bkimg{
+  z-index: -1;
+  top: 0;
+  width:100%;
+  height: 100%;
+  position: fixed;
+  background-size: 100% 100%;
+}
+
+.else{
+  font-size: 40rpx;
+  display: flex;
+  padding: 30rpx;
+  margin:950rpx 20rpx;
+  background-color: #FFFAF0;
+  border: solid 1px black;
 }

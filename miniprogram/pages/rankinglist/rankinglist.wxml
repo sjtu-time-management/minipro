@@ -9,6 +9,26 @@
   <image class="gif1" src="/images/giftest.gif"></image>
   <image class="gif1" src="/images/giftest.gif"></image>
 </view>
+
+<view class = "rankinglist2">
+  <text class="index">第{{my+1}}名</text>
+  <view hidden="{{my!=0}}">
+    <image class="medal" src="/images/gold.jpg"></image>
+  </view>
+  <view hidden="{{my!=1}}">
+    <image class="medal" src="/images/silver.jpg"></image>
+  </view>
+  <view hidden="{{my!=2}}">
+    <image class="medal" src="/images/copper.jpg"></image>
+  </view>
+  <view hidden="{{my==0||my==1||my==2}}">
+    <text class="medal"></text>
+  </view>
+  <image class="pic" src="{{scoredata[my].pic}}"></image>
+  <text class="username">{{scoredata[my].username}}</text>
+  <text class="score">{{scoredata[my].score}}</text>
+</view>
+
 <scroll-view scroll-y="true" style="height: {{totalh*0.92}}px" bindrefresherrefresh="refresh" refresher-enabled="true">
   <view style="height:{{lheight}}rpx">
     <view class="rankinglist1" wx:for="{{scoredata}}">

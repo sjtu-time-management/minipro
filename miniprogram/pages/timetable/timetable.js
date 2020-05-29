@@ -132,6 +132,7 @@ Page({
     disabled: false,
     dayofweek: '',
     navState: 0, //导航状态
+    login_flag: Boolean(app.globalData.login),
     t0: '',
     t1: '',
     t2: '',
@@ -297,7 +298,7 @@ Page({
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
   },
-  // 优化，写成类/删除失败
+  // 优化，写成类
   deleteEvent1: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records1;
@@ -349,19 +350,21 @@ Page({
     })
     setTimeout(function() {
       that.setData({
-        spinstatus:false
+        spinstatus:false,
+        login_flag: app.globalData.login,
       })
 
     }, 2000)
-this.setData({
-  totalh:wx.getSystemInfoSync().windowHeight
-})
+    this.setData({
+      totalh:wx.getSystemInfoSync().windowHeight
+    })
     
     var myDate = new Date();
 
     //this.onLoad()
     
     //change424
+    // 以下确定Load日期
     var time = util.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据
     that.setData({
@@ -396,7 +399,7 @@ this.setData({
     })
     if (that.data.t1 < that.data.t0) {
       that.setData({
-        m1: "6"
+        m1: String(parseInt(time[6])+1)
       })
     } else {
       that.setData({
@@ -406,7 +409,7 @@ this.setData({
     console.log(that.data.m1)
     if (that.data.t2 < that.data.t0) {
       that.setData({
-        m2: "6"
+        m2: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -416,7 +419,7 @@ this.setData({
 
     if (that.data.t3 < that.data.t0) {
       that.setData({
-        m3: "6"
+        m3: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -426,7 +429,7 @@ this.setData({
 
     if (that.data.t4 < that.data.t0) {
       that.setData({
-        m4: "6"
+        m4: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -435,7 +438,7 @@ this.setData({
     }
     if (that.data.t5 < that.data.t0) {
       that.setData({
-        m5: "6"
+        m5: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -444,7 +447,7 @@ this.setData({
     }
     if (that.data.t6 < that.data.t0) {
       that.setData({
-        m6: "6"
+        m6: String(parseInt(time[6]) + 1)
       })
     } else {
       that.setData({
@@ -812,8 +815,11 @@ this.setData({
   },
 
   onLoad: function(options) {
+    this.setData({login_flag: Boolean(app.globalData.login)});
+    console.log("log------------------:",this.data.login_flag);
     this.getapi();
   },
+
   getapi: function() {
     var _this = this;
     // 获取IP地址

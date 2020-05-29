@@ -5,6 +5,15 @@
   background-color: #FFFAF0;
   border: solid 1px black;
 }
+
+.rankinglist2{
+  display: flex;
+  padding: 30rpx;
+  margin:20rpx 20rpx;
+  background-color: #FFFDFA;
+  border: solid 1px black;
+}
+
 .index{
   width: 100rpx;
   font-weight: bold;

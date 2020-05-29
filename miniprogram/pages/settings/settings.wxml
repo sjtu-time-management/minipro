@@ -1,5 +1,6 @@
 <!--miniprogram/pages/settings/settings.wxml-->
-<view class='container'>
+
+<view wx:if="{{login}}" class="container">
   <image class="avatar" src='{{pic}}'></image>
   <view class="bottom">{{nickName}}</view>
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -18,7 +19,11 @@
   <view class="bottom">
     <button class="bottom" bindtap="onSave">保存</button>
   </view>
-
 </view>
 
-
+<view wx:else class="container">
+  <image class="avatar" src='{{pic}}'></image>
+  <navigator url="/pages/login/login" open-type="navigate" hover-class="bottom" class="bottom">
+  点击这里登陆以使用小程序
+  </navigator>
+</view>

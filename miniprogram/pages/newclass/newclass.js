@@ -240,6 +240,20 @@ Page({
     })*/
   },
   combutton:function(){
+    if (this.data.itag  == "") {
+      wx.showToast({
+        title: '请完整填写',
+        icon: 'none'
+      });
+      return;
+    }
+    if (this.data.casIndex3 > this.data.casIndex4) {
+      wx.showToast({
+        title: '请正确填写节次顺序',
+        icon: 'none'
+      });
+      return;
+    }
     if (this.data.noti_flag) {
       var that = this;
       wx.login({
@@ -291,11 +305,6 @@ Page({
                       })
                       wx.switchTab({
                         url: '/pages/timetable/timetable',
-                        success: function (e) {
-                          var page = getCurrentPages().pop();
-                          if (page == undefined || page == null) return;
-                          page.onShow();
-                        }
                       });
                       console.log('成功！！！')
                     }
@@ -309,11 +318,6 @@ Page({
                         }
                       })
                       wx.switchTab({ url: '/pages/timetable/timetable' ,
-                       success: function (e) {
-                          var page = getCurrentPages().pop();
-                          if (page == undefined || page == null) return;
-                          page.onShow();
-                        }
                       });
                     }
                     console.log(res)
@@ -329,11 +333,6 @@ Page({
                     })
                     wx.switchTab({
                       url: '/pages/timetable/timetable',
-                      success: function (e) {
-                        var page = getCurrentPages().pop();
-                        if (page == undefined || page == null) return;
-                        page.onShow();
-                      }
                     });
                     console.log(res)
                   })
@@ -368,15 +367,20 @@ Page({
         console.log(res)
       },
     })
-    wx.navigateBack({})
+    wx.switchTab({
+      url: '/pages/timetable/timetable',
+    });
   } 
     wx.showToast({
       title: "Loading",
       icon: 'loading',
       duration: 500,
     })
+
     setTimeout(function () {
-      wx.navigateBack({})
+      wx.switchTab({
+        url: '/pages/timetable/timetable',
+      });
     }, 500)
   },
 
