@@ -302,11 +302,6 @@ Page({
     })
     wx.switchTab({
       url: '/pages/timetable/timetable',
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onShow();
-      }
     });
   } 
     wx.showToast({
@@ -317,11 +312,6 @@ Page({
     setTimeout(function() {
       wx.switchTab({
         url: '/pages/timetable/timetable',
-        success: function (e) {
-          var page = getCurrentPages().pop();
-          if (page == undefined || page == null) return;
-          page.onShow();
-        }
       });
     }, 500)
   }
