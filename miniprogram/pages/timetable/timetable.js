@@ -126,6 +126,7 @@ Page({
     records4: [],
     records5: [],
     records6: [],
+    // 存储七天的记录
     time: '',
     dates: '',
     loading: false,
@@ -152,6 +153,7 @@ Page({
     dates4: '',
     dates5: '',
     dates6: '',
+    // 解析七天的日期
     swiperheight: 0,
     weather: {
       'wea_img': 'qing'
@@ -298,7 +300,7 @@ Page({
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
   },
-  // 优化，写成类
+  // 优化封装使用
   deleteEvent1: function (e) {
     var index = e.currentTarget.dataset.index;
     var records = this.data.records1;
@@ -335,14 +337,7 @@ Page({
     var flag = records[index].noti_flag;
     del(flag, records, index, this);
   },
-  /////////
-  ////////////
-  /////////
-  //////////
-  ////////////
-  //////////
-  ////////////
-  //////////
+ 
   onShow: function() {
     var that = this;
     this.setData({
@@ -379,6 +374,7 @@ Page({
       t0: Number(time[8]) * 10 + Number(time[9])
     })
     console.log(that.data.t0)
+    // 确定七天的日期
     that.setData({
       t1: (that.data.t0 + 1) % 31,
     })
@@ -397,6 +393,7 @@ Page({
     that.setData({
       t6: (that.data.t5 + 1) % 31,
     })
+    // 确定七天的月份
     if (that.data.t1 < that.data.t0) {
       that.setData({
         m1: String(parseInt(time[6])+1)
