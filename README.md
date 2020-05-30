@@ -6,9 +6,9 @@ A time management WeChat Mini Program especially designed for SJTU students. Hel
 
 ## Getting Started
 
-***Time Management SJTU*** is developed with [WeChat DevTools](https://developers.weixin.qq.com/miniprogram/en/dev/devtools/download.html). With Mini Program debugging, developers can debug the Mini Program APIs and pages, view and edit codes, preview and publish the Mini Program, etc. More details at [WeChat Official Document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/).
+**Time Management SJTU** is developed with [WeChat DevTools](https://developers.weixin.qq.com/miniprogram/en/dev/devtools/download.html). With Mini Program debugging, developers can debug the Mini Program APIs and pages, view and edit codes, preview and publish the Mini Program, etc. More details at [WeChat Official Document](https://developers.weixin.qq.com/miniprogram/en/dev/framework/).
 
-Due to the fact that the Mini Program has something to do with providing services such as memos, diaries, etc., which are not available for Mini Programs of personal type, ***Time Management SJTU*** has not yet been released as we are not able to apply for an enterprise account.
+Due to the fact that the Mini Program has something to do with providing services such as memos, diaries, etc., which are not available for Mini Programs of personal type, **Time Management SJTU** has not yet been released as we are not able to apply for an enterprise account.
 
 ## Feature
 
@@ -21,18 +21,18 @@ Due to the fact that the Mini Program has something to do with providing service
 
 ## Screenshot
 
-###Homepage
+### Homepage
 
-![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/homepage.png)
+![image](/screenshot/homepage.png)
 
 ### Timetable
 
-![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/timetable.png)
+![image](/screenshot/timetable.png)
 
-###Clock in
+### Clock in
 
-![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/clockin.png)
+![image](/screenshot/clockin.png)
 
-###Clock-in rank
+### Clock-in rank
 
-![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/rank.png)
+![image](/screenshot/rank.png)
