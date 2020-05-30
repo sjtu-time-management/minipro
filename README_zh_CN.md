@@ -1,0 +1,35 @@
+# minipro
+
+一款为交大学生设计的时间管理微信小程序，让你成为自己的时间管理大师！
+
+## 入门指南
+
+***时间管理SJTU***是用[微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)进行开发的。利用使用小程序调试功能，开发者可以完成小程序的 API 和页面的开发调试、代码查看和编辑、小程序预览和发布等功能。更多详情请见[微信官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)。
+
+由于***时间管理SJTU***涉及提供备忘录、日记、记事等属于个人主体小程序未开放类目的服务，而我们不能申请到企业主体小程序账号，因此，这个小程序暂时未能发布。
+
+##小程序功能
+
+- **添加或删除你的课程、事件。**在选择了专业和年级后，小程序可以提供相应专业和年级的必修课以供课程添加，使得添加课程的操作变得更加轻松快捷。
+- **查看时间表。**在时间表页面可以查看到自己的日程表，上面展示了添加过的课程和事件信息。
+- **查看天气预报。**我们还贴心地在时间表页面上为用户展示了每日的天气预报。
+- **事件提醒。**在添加课程或事件时，可以设置提醒功能。小程序将通过公众号消息的形式在指定时间发送提醒。
+- **早睡早起打卡。**同学们可以在早晚特定时间段打卡并留言，以此鼓励大家早睡早起，养成良好的生活习惯。在打卡页面还可以看到他人的打卡感言。进入打卡排行页面，可以看到你在所有用户中的打卡排名。
+
+## 截图
+
+###主页
+
+![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/homepage.png)
+
+### 时间表页面
+
+![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/timetable.png)
+
+###打卡页面
+
+![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/clockin.png)
+
+###打卡排行页面
+
+![image](https://github.com/sjtu-time-management/minipro/blob/master/screenshot/rank.png)

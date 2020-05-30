@@ -90,6 +90,10 @@ Page({
           },
           success: function (res) {
             console.log(res)
+            wx.showToast({
+              title: '打卡成功~',
+              icon: 'none'
+            })
           },
         })
       }
@@ -103,6 +107,10 @@ Page({
           },
           success: function (res) {
             console.log(res.data)
+            wx.showToast({
+              title: '打卡成功~',
+              icon: 'none'
+            })
           }
         })
       }
