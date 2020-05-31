@@ -1,0 +1,86 @@
+<wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
+<image src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ps5(添加事件界面 (1).gif" class="bkimg" mode="aspectFill"></image>
+<view class="bzt">
+<wux-steps current="{{ current }}" >
+  <wux-step title="事件内容"></wux-step>
+  <wux-step title="事件时间"></wux-step>
+  <wux-step title="设置提醒"></wux-step>
+</wux-steps>
+</view>
+<view wx:if="{{current==0}}" class="infoview0">
+  <text>事件关键字：</text>
+  <input bindinput='inputTag' placeholder='最多输入3个字（必填）' maxlength="3" style='border:1rpx solid #000;' class="shurukuang"></input>
+  <text>详细信息：</text>
+  <textarea bindinput='inputDetail' placeholder='最多输入30个字' maxlength="30" style='border:1rpx solid #000;' class="shurukuang"/>
+</view>
+
+<view wx:if="{{current==1}}">
+  <view class="timeselect">
+    <text class="texts"> 时间 : </text>
+    <view class="section">
+
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+
+        <view class="picker">
+
+          {{cstart}}
+
+        </view>
+
+      </picker>
+
+    </view>
+    <text>~</text>
+    <view class="section">
+
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChangeend">
+
+        <view class="picker">
+
+          {{cend}}
+
+        </view>
+
+      </picker>
+
+    </view>
+  </view>
+  
+<wux-calendar id="wux-calendar"  />
+  <wux-cell title="日期：" extra="{{ dates }}" bind:click="openCalendar1"></wux-cell>
+
+</view>
+
+<view wx:if="{{current==2}}">
+  <!-->提醒功能-->
+<view class="infoview">
+<view class="noti">
+<text class="texts">设置提醒</text>
+      <switch value="{{notifi.name}}" bindchange="checkbox_change" checked="{{notifi.checked}}" class="sw"/>
+</view>
+
+  <view class="section">
+
+    <picker mode="selector" range="{{array}}" value="{{noti_index}}" disabled="{{disabled}}" bindchange="bindnotiChange">
+
+      <view class="noti">
+        <text class="texts">提醒时间</text>
+        <text>{{array[noti_index]}}</text>
+
+      </view>
+
+    </picker>
+</view>
+  </view>
+  <view wx:if="{{current==2}}">
+  <button type="default" bindtap="onClick1">上一步</button>
+  </view>
+  <button bindtap="commitbutton" type="warn" class="cbutton">确认提交</button>
+
+</view>
+<view class="button-sp-area" wx:if="{{current!=2}}">
+<button type="default" bindtap="onClick1">上一步</button>
+  <button type="default" bindtap="onClick">下一步</button>
+</view>
+
+</wux-spin>

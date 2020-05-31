@@ -1,0 +1,54 @@
+<image class="bkimg" mode="aspectFill" src="cloud://engineering-dvsy5.656e-engineering-dvsy5-1301650528/ljt.jpg"></image>
+<wux-spin nested spinning="{{spinstatus}}" tip="Loading...">
+<view class="gifview">
+  <image class="gif1" src="/images/giftest.gif"></image>
+  <image class="gif1" src="/images/giftest.gif"></image>
+  <image class="gif1" src="/images/giftest.gif"></image>
+  <text class="title">排行榜</text>
+  <image class="gif1" src="/images/giftest.gif"></image>
+  <image class="gif1" src="/images/giftest.gif"></image>
+  <image class="gif1" src="/images/giftest.gif"></image>
+</view>
+
+<view class = "rankinglist2">
+  <text class="index">第{{my+1}}名</text>
+  <view hidden="{{my!=0}}">
+    <image class="medal" src="/images/gold.jpg"></image>
+  </view>
+  <view hidden="{{my!=1}}">
+    <image class="medal" src="/images/silver.jpg"></image>
+  </view>
+  <view hidden="{{my!=2}}">
+    <image class="medal" src="/images/copper.jpg"></image>
+  </view>
+  <view hidden="{{my==0||my==1||my==2}}">
+    <text class="medal"></text>
+  </view>
+  <image class="pic" src="{{scoredata[my].pic}}"></image>
+  <text class="username">{{scoredata[my].username}}</text>
+  <text class="score">{{scoredata[my].score}}</text>
+</view>
+
+<scroll-view scroll-y="true" style="height: {{totalh*0.92}}px" bindrefresherrefresh="refresh" refresher-enabled="true">
+  <view style="height:{{lheight}}rpx">
+    <view class="rankinglist1" wx:for="{{scoredata}}">
+      <text class="index">第{{index+1}}名</text>
+      <view hidden="{{index!=0}}">
+        <image class="medal" src="/images/gold.jpg"></image>
+      </view>
+      <view hidden="{{index!=1}}">
+        <image class="medal" src="/images/silver.jpg"></image>
+      </view>
+      <view hidden="{{index!=2}}">
+        <image class="medal" src="/images/copper.jpg"></image>
+      </view>
+      <view hidden="{{index==0||index==1||index==2}}">
+        <text class="medal"></text>
+      </view>
+      <image class="pic" src="{{item.pic}}"></image>
+      <text class="username">{{item.username}}</text>
+      <text class="score">{{item.score}}</text>
+    </view>
+  </view>
+</scroll-view>
+</wux-spin>

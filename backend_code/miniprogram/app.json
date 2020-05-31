@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/homepage/homepage",
+    "pages/login/login",
+    "pages/settings/settings",
+    "pages/timetable/timetable",
+    "pages/newevent/newevent",
+    "pages/newclass/newclass",
+    "pages/clockin/clockin",
+    "pages/rankinglist/rankinglist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#77DDFF",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#9B9B9B",
+    "selectedColor": "FF0000",
+    "backgroundColor": "#F8F8F8",
+    "borderStyle": "black",
+    "list": [
+      {
+        "text": "时间表",
+        "pagePath": "pages/timetable/timetable",
+        "iconPath": "icons/tmtbicon.jpg",
+        "selectedIconPath": "icons/tmtbiconb.jpg"
+      },
+      {
+        "text": "打卡",
+        "pagePath": "pages/clockin/clockin",
+        "iconPath": "icons/clockinicon.png",
+        "selectedIconPath": "icons/sclockinicon.jpg"
+      },
+      {
+        "text": "关于",
+        "pagePath": "pages/homepage/homepage",
+        "iconPath": "icons/info.jpg",
+        "selectedIconPath": "icons/infob.jpg"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap70.json"
+}

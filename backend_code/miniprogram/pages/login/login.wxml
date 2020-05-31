@@ -1,0 +1,24 @@
+<!--miniprogram/pages/login.wxml-->
+<view wx:if="{{list.length}}">
+  <view class='header'>已授权登录</view>
+  <navigator url="/pages/homepage/homepage" open-type="switchTab" class = 'content'>
+  若长时间无响应请点击这里跳转到首页
+  </navigator>
+</view>
+<view wx:else> <view wx:if="{{canIUse}}">
+    <view class='header'>
+      <image src='/images/blueclock.jpg'></image>
+    </view>
+    <view class='content'>
+      <view>时间管理sjtu申请获取以下权限</view>
+      <text>获得你的公开信息(昵称，头像等)</text>
+    </view>
+    <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+      授权登录
+    </button>
+    <button class='bottom' type='default' bindtap="refuse">
+      取消授权
+    </button>
+  </view>
+  <view wx:else>请升级微信版本</view>
+  </view>

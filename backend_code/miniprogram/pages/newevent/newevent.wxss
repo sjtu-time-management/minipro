@@ -1,0 +1,66 @@
+.shortinput{
+  border:1rpx solid #000;
+  width: 200rpx;
+}
+
+.shortinput2{
+  border:1rpx solid #000;
+  width: 150rpx;
+  margin: 0 15rpx;
+}
+.timeselect{
+  display:flex;
+  margin-top: 25rpx;
+}
+
+.picker{
+  border:1rpx solid grey;
+  width: 100rpx;
+}
+
+.picker2{
+  border:1rpx solid grey;
+  width: 230rpx;
+}
+.cbutton{
+  margin-top: 25rpx;
+}
+.texts{
+  margin-right: 375rpx;
+  margin-left: 30rpx;
+
+}
+.shurukuang{
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  width: 680rpx;
+}
+.button-sp-area{
+  display: flex;
+}
+.bzt{
+  margin-top:40rpx;
+}
+.bkimg{
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 500rpx;
+}
+.noti{
+  display: flex;
+  margin-top: 10rpx;
+}
+.sw{
+  margin-left: 50rpx;
+}
+.infoview{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.infoview0{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}

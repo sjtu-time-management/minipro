@@ -1,0 +1,113 @@
+
+.timetable1{
+  display: flex;
+  padding: 30rpx;
+  margin:20rpx 20rpx;
+  background-color:rgba(255,250,248,0.38);
+  border: solid 1px black;
+  height: 120rpx;
+}
+.evttag{
+  font-size: 50rpx;
+  color: blue;
+  font-weight: bold;
+  width: 160rpx;
+  margin-right: 20rpx;
+}
+.evttag2{
+  font-size: 30rpx;
+  color: blue;
+  font-weight: bold;
+  width: 200rpx;
+}
+.rightside{
+  font-size: 25rpx;
+  width:520rpx;
+}
+
+.delete{
+  color: red;
+}
+.hiddenpart{
+  color: gray;
+  text-align: center;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.count{
+  margin-left: 30rpx;
+}
+/* 一下左右滑动 */
+.nav{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color:rgba(255, 255, 255,0.5);
+}
+.nav1{
+display: flex;
+  justify-content: space-around;
+  font-size: 30rpx;
+}
+.nav-switch-style{
+  color: palevioletred;
+  font-weight: bold;
+}
+.style-default{
+  padding: 30rpx 0;
+  font-size: 30rpx;
+  /* text-align: center; */
+}
+.style-roll{
+  background-color:transparent;
+  padding:10px 5px 15px 10px; 
+  /* text-align: center;   */
+}
+
+.currentday{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+ background-color: rgba(255, 255, 255,0.75);
+ border-bottom:solid 1px rgba(0,0,0,0.4);
+ justify-content: center;
+}
+
+.buttonimg{
+  background-color:transparent;
+  border: none;
+  height: 100rpx;
+  width: 200rpx;
+  margin-left: -10rpx;
+}
+.container {
+  height: 100%;
+  text-align:center; background:#f6f8f8; padding:20rpx;font-size:16px;
+}
+.padb{padding-bottom: 15rpx;}
+/* pages/timemanagement/timemanagement.wxss */
+
+.bkimg{
+  z-index: -1;
+  top: 0;
+  width:100%;
+  height: 100%;
+  position: fixed;
+  background-size: 100% 100%;
+}
+.ghbutton{
+  position: fixed;
+  width: 160rpx;
+  height:50rpx;
+  bottom: 30rpx;
+  right: 30rpx;
+  z-index: 2;
+}
+.ghbutton1{
+  position: fixed;
+  width: 490rpx;
+  height:50rpx;
+  bottom: 30rpx;
+  right: 10rpx;
+  z-index: 2;
+}
