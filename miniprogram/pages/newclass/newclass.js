@@ -18,21 +18,21 @@ Page({
     casIndex2:0,
     casIndex3: 0,
     casIndex4: 0,
-    classes: [],
+    classes:[],
     dayofweek: ['周一', '周二', '周三', '周四', '周五','周六','周日'],
     classno1: ['1', '2', '3', '4', '5','6','7','8','9','10','11'],
     classno2: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     notifi: { name: 'notifi' },
     array: ['30分钟前', '10分钟前', '5分钟前', '时间生效时'],
-    times: '',
+    times:'',
     disabled: true,
     noti_index: 0,
     noti_flag: false,
     itag:'',
-    cstart: '08:00',
+    cstart:'',
     spinstatus: true,
-    cend: '08:45',
-    cdow: 1
+    cend:'',
+    cdow:''
   },
   bindCasPickerChange: function (e) {
     console.log('选的是', this.data.classes[e.detail.value])

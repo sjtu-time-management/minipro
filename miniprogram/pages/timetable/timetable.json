@@ -3,6 +3,7 @@
   "usingComponents": {
     "wux-fab-button": "../../dist/fab-button/index",
     "wux-sticky": "../../dist/sticky/index",
+    "wux-sticky-item": "../../dist/sticky-item/index",
     "wux-spin": "../../dist/spin/index"
   }
 }
